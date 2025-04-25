@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="img/logo3-removebg-preview.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/nosotros.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Sobre Nosotros - Farmacia Emma</title>
+
+    <!-- SweetAlert -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <nav class="menu-horizontal">
+
+        <div id="logo"><img src="img/logo3-removebg-preview.png" alt="Farmacia Emma"></div>
+
+        <!-- Menú desplegable -->
+
+        <button class="MenuDesplegable" onclick="MenuDesplegable()">
+
+
+            <span data-translate="menu" class="text">MENU</span>
+        </button>
+
+
+        <ul>
+            <li><a data-translate="inicio" href="inicio.html">Inicio</a></li>
+
+            <li class="has-submenu">
+                <a data-translate="productos" href="#">Productos</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none; color: #eeea05;" data-translate="farmaciaOnline"
+                            href="farmaciaOnline.html">Farmacia Online</a></li>
+
+                    <li><a style="text-decoration: none;" data-translate="productosDestacados"
+                            href="#inicioProductos">Productos
+                            Destacados</a></li>
+
+
+                    <li><a style="text-decoration: none;" data-translate="instrumentos"
+                            href="instrumentos.html">Instrumentos
+                            Farmaceuticos</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="servicios" href="#">Servicios</a>
+                <ul class="submenu">
+                    <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                    <li><a data-translate="consultoria" href="consultoria.html">Consultoría</a></li>
+                    <li><a data-translate="CalculadoraPeso" href="calculadoraPeso.html">Calculadora de Peso</a></li>
+
+                </ul>
+            </li>
+
+            <li><a style="text-decoration: none;" data-translate="contactanos" href="#InicioContactanos">Contactanos</a>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="acercaDe" href="#">Acerca de</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none;" data-translate="nosotros" href="nosotros.html">Nosotros</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="proyectos" href="proyectos.html">Proyectos</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciasDisponibles"
+                            href="localidades.html">Ubicaciones</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciaVirtual" href="portada.html">Farmacia
+                            Virtual 360°</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+
+        <!-- Inico de sesion / registrarse -->
+
+        <div class="contenedorBoton">
+            <img class="botonIcono" src="img/login.png" alt="login">
+            <div class="menuDesplegable">
+                <button class="btnLogin" data-translate="iniciarSesion" onclick="mostrarIniciarSesion()">Iniciar
+                    Sesion</button>
+                <button class="btnLogin" data-translate="registrarse"
+                    onclick="mostrarRegistrarse()">Registrarse</button>
+
+            </div>
+        </div>
+
+
+
+        <div id="seccionDesplegable">
+            <div>
+                <span id="botonCerrar"></span>
+
+                <form id="formularioInicio" style="display: none;">
+                    <button id="botonAbrir" onclick=""></button>
+
+                    <button id="botonRegistrarse" onclick=""></button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <!-- boton Traducir pagina -->
+        <!-- From Uiverse.io by csemszepp -->
+        <label class="switch">
+            <input onclick="changeLanguage()" type="checkbox" class="chbox">
+            <div class="slider slider--0">EN</div>
+            <div class="slider slider--1">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="slider slider--2"></div>
+            <div class="slider slider--3">ES</div>
+        </label>
+
+
+
+        <!-- Carrito de compras -->
+        <div class="carrito-icono" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contadorCarrito">0</span>
+        </div>
+
+
+    </nav>
+
+
+    <div class="ContenedorPrincipal">
+        <div class="SeccionHistoria">
+            <h2 data-translate="nuestraHistoria" class="TituloSeccion">Nuestra Historia</h2>
+            <p data-translate="nuestraHistoriaP1">Farmacia Emma fue fundada en 2021 por la Dra. Emma Méndez, un
+                farmacéutico apasionado por brindar
+                atención personalizada y medicamentos de calidad a la comunidad. Lo que comenzó como una pequeña
+                farmacia de barrio en el corazón de la ciudad, hoy se ha convertido en una red de 12 establecimientos
+                que sirven a más de 50,000 pacientes al mes.</p>
+            <p data-translate="nuestraHistoriaP2">En 2022, bajo la dirección de la hija de la fundadora, la Dra. Laura
+                Hernandez, implementamos nuestro
+                programa de farmacia digital, siendo pioneros en la integración de tecnología para mejorar el servicio
+                al cliente. Hoy seguimos innovando con nuestra aplicación móvil y servicio de entrega a domicilio.</p>
+        </div>
+
+        <div class="SeccionMision">
+            <h2 data-translate="mision" class="TituloSeccion">Misión</h2>
+            <p data-translate="misionP">Proporcionar productos farmacéuticos y servicios de salud de la más alta
+                calidad, con un equipo
+                profesional comprometido en ofrecer atención personalizada, consejos expertos y soluciones integrales
+                para el bienestar de nuestros clientes.</p>
+        </div>
+
+        <div class="SeccionVision">
+            <h2 data-translate="vision" class="TituloSeccion">Visión</h2>
+            <p data-translate="visionP">Ser reconocidos como la cadena de farmacias líder en innovación y servicio al
+                cliente, expandiendo
+                nuestra presencia a nivel nacional mientras mantenemos nuestros valores fundamentales de integridad,
+                excelencia y compromiso con la comunidad.</p>
+        </div>
+
+
+        
+
+
+        <!-- SECCION CONTADOR NUMERICO -->
+
+        <section class="ftco-counter SeccionMision TituloSeccion" id="section-counter">
+            <div class="container">
+
+
+                <h2 class="titulos text-center">Estadísticas Farmacia Emma</h2>
+                <div class="row pt-5">
+
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap">
+                        <div class=" block-18 text-center ">
+                            <div class="text ">
+                                <strong class="number " data-number="5000 ">0</strong>
+                            </div>
+                            <div class="text-black ">
+                                <h5>Entregas Completadas</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate ">
+                        <div class="block-18 text-center ">
+                            <div class="text ">
+                                <strong class="number " data-number="15 ">0</strong>
+                            </div>
+                            <div class="text-black ">
+                                <h5>Marcas Registradas</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate ">
+                        <div class="block-18 text-center ">
+                            <div class="text ">
+
+                                <strong class="number " data-number="10 ">0</strong>
+                            </div>
+                            <div class="text-black ">
+                                <h5>Años de Experiencia</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate ">
+                        <div class="block-18 text-center ">
+                            <div class="text ">
+                                <strong class="number " data-number="8 ">0</strong>
+                            </div>
+                            <div class="text-black ">
+                                <h5>Total de Farmcias</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+
+        <div class="SeccionValores">
+            <h2 data-translate="valores" class="TituloSeccion">Nuestros Valores</h2>
+            <ul class="ListaValores">
+
+                <li class="ItemValor"><strong data-translate="valor1Strong">Integridad:</strong>
+                    <p data-translate="valor1Li"> Actuamos con honestidad y transparencia en todas
+                        nuestras relaciones.</p>
+                </li>
+
+                <li class="ItemValor"><strong data-translate="valor2Strong">Excelencia:</strong>
+                    <p data-translate="valor2Li">Buscamos la mejora continua en nuestros productos y
+                        servicios.</p>
+                </li>
+
+                <li class="ItemValor"><strong data-translate="valor3Strong">Empatía:</strong>
+                    <p data-translate="valor3Li"> Escuchamos y comprendemos las necesidades de cada
+                        paciente.</p>
+                </li>
+
+                <li class="ItemValor"><strong data-translate="valor4Strong">Innovación:</strong>
+                    <p data-translate="valor4Li"> Adoptamos tecnologías y métodos que mejoran la
+                        experiencia del cliente.</p>
+                </li>
+
+                <li class="ItemValor"><strong data-translate="valor5Strong">Responsabilidad social:</strong>
+                    <p data-translate="valor5Li"> Contribuimos activamente al bienestar de nuestra comunidad.</p>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <!-- CAROUSEL-->
+
+        <div class="pt-5"></div>
+
+        <div class="nuestroEquipo">
+
+            <h2 data-translate="nuestroEquipo" class="TituloSeccion">Nuestro Equipo</h2>
+
+            <p class="informacion">
+                En Farmacia Emma, contamos con un equipo de profesionales comprometidos con tu salud y bienestar. Cada
+                miembro está aquí para brindarte atención personalizada, asesoramiento experto y los mejores productos
+                farmacéuticos.
+            </p>
+            <!-- cargar la imagen principal del carousel-->
+            <img src="img/optimizando-sistema-salud_1.avif" style="height: 250px; width: 250px;" name="thumb" class="img-fluid"> <br><br>
+            <!-- agregar el titulo de las fotos por medio del ID -->
+            <ul>
+                <a id="nombre"></a> <br>
+                <a id="puesto"></a> <br>
+                <a id="informacion"></a>
+            </ul>
+            <div class="text-center pt-5">
+
+                <div class="pt-5"></div>
+                <!-- Botones Anterior/Siguiente -->
+                <button class="btn btn-primary btn-lg" id="anterior" onclick="cambiar(-1)">&#8592</button>
+                <button class="btn btn-primary btn-lg" id="siguiente" onclick="cambiar(1)">&#8594</button>
+            </div>
+        </div>
+
+        <div class="pt-5 "></div>
+
+
+        <!-- tira fotografica -->
+
+        <div id="owl-demo" class="owl-carousel text-center">
+
+            <div class=" text-center" style="margin-top: 80px; margin-left: 10px;">
+
+                <h2 data-translate="nuestrosServicios" class="TituloSeccion" style="color: #f4f4f4;">Servicios Personalizados</h2>
+
+            </div>
+
+            <div class="item">
+
+                <div class="">
+                    <!-- lazyOwl es una instruccion de JS para agilizar la carga de las fotos -->
+                    <img class="lazyOwl img-fluid rounded-circle" data-src="img/AsesoramientoFarmacéutico.webp"
+                        alt="perfil1">
+                </div>
+
+                <div class="">
+                    <h4 class="" data-translate="nuestrosServiciosB1">Asesoría Farmacéutica</h4>
+                    <p class="p1 text-center" data-translate="servicioB1">Nuestros farmacéuticos están disponibles para
+                        resolver todas tus dudas sobre medicamentos y tratamientos.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="item">
+
+
+                <div class="">
+                    <!-- lazyOwl es una instruccion de JS para agilizar la carga de las fotos -->
+                    <img class="lazyOwl img-fluid rounded-circle" data-src="img/farmacia.jpg.webp" alt="perfil1">
+                </div>
+
+
+                <div class="">
+                    <h4 class="" data-translate="dosificaion">Programa de Dosificación Personalizada</h4>
+                    <p class="p1 text-center" data-translate="dosificaionDescripcion">Preparamos tus medicamentos en
+                        dosis exactas y organizadas según tu tratamiento.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="item">
+
+
+                <div class="">
+                    <!-- lazyOwl es una instruccion de JS para agilizar la carga de las fotos -->
+                    <img class="lazyOwl img-fluid rounded-circle" data-src="img/ServiciosAdicionales.jpg" alt="perfil1">
+                </div>
+
+
+                <div class="">
+                    <h4 class="" data-translate="infoEnvioH1">Servicio de Entregas a Domicilio</h4>
+                    <p class="p1 text-center" data-translate="domicilio">Entrega rápida y segura de tus medicamentos en
+                        la comodidad de tu hogar.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="item">
+
+
+                <div class="">
+                    <!-- lazyOwl es una instruccion de JS para agilizar la carga de las fotos -->
+                    <img class="lazyOwl img-fluid rounded-circle" data-src="img/ControlParametros.jpg" alt="perfil1">
+                </div>
+
+
+                <div class="">
+                    <h4 class="" data-translate="controlParametros">Control de Parámetros Básicos</h4>
+                    <p class="p1 text-center" data-translate="descripcionParametros">Medición gratuita de presión
+                        arterial, glucosa y otros parámetros de salud, sin costo.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="item">
+
+
+                <div class="">
+                    <!-- lazyOwl es una instruccion de JS para agilizar la carga de las fotos -->
+                    <img class="lazyOwl img-fluid rounded-circle" data-src="img/farmacia-digital3.jpg" alt="perfil1">
+                </div>
+
+
+                <div class="">
+                    <h4 class="" data-translate="farmaciaDigital">Farmacia Digital</h4>
+                    <p class="p1 text-center" data-translate="DigitalDecrip">En Farmcia Emma, nos dedicamos a hacer tu
+                        vida más fácil y saludable. Somos una farmacia 100% online.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="item">
+
+
+                <div class="">
+                    <!-- lazyOwl es una instruccion de JS para agilizar la carga de las fotos -->
+                    <img class="lazyOwl img-fluid rounded-circle" data-src="img/adherencia_tratamiento.webp"
+                        alt="perfil1">
+                </div>
+
+
+                <div class="">
+                    <h4 class="" data-translate="adherencia">Programas de Adherencia Terapéutica</h4>
+                    <p class="p1 text-center" data-translate="adherenciaDescrip">Seguimiento personalizado para asegurar
+                        el correcto cumplimiento de tus tratamientos.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="carrito-desplegable" id="carritoDesplegable">
+            <h2 data-translate="carritoCompras">Carrito de Compras</h2>
+            <div id="listaCarrito"></div>
+            <div class="totales">
+                <p>Subtotal: <span id="subtotal">$0.00</span></p>
+                <p>IVA (16%): <span id="iva">$0.00</span></p>
+                <label>
+                    <input type="checkbox" id="envioCheckbox" onchange="actualizarTotales()"> ¿Desea envío? ($5.00)
+                </label>
+                <p>Envío: <span id="envio">$0.00</span></p>
+                <p>Total: <span id="total">$0.00</span></p>
+            </div>
+            <button data-translate="vaciarCarrito" class="vaciarCarrito" onclick="vaciarCarrito()">Vaciar
+                Carrito</button>
+            <button data-translate="pagar" class="pagar" onclick="pagar()">Pagar</button>
+        </div>
+
+    </div>
+
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-section">
+            <h3 data-translate="contactanos">Contactanos</h3>
+            <p data-translate="direccion"> <img src="img/direction.svg" alt="direccion" height="35px"> Dirección: Calle
+                Falsa 123, Ciudad, País
+            </p>
+            <p> <img src="img/Contactanos.svg" alt="Contactanos" height="35px"> +506 4560 7809</p>
+            <p> <img src="img/email.svg" alt="Email" height="35px"> info@farmaciaemma.com</p>
+
+            <iframe id="Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1637572.0349856855!2d-104.81044937428791!3d38.84777619594149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1740525684159!5m2!1ses!2scr"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <!-- Sección de enlaces rápidos -->
+        <div class="footer-section">
+            <h3 data-translate=rapidos>Enlaces Rapidos</h3>
+            <ul class="link-rap">
+                <li><a data-translate="inicio" href="inicio.html">Inicio</a></li>
+
+                <li><a data-translate="farmaciaOnline" href="#farmaciaonline">Farmacia Online</a></li>
+
+                <li><a data-translate="nuestrosProductos" href="#inicioProductos">Productos Destacados</a></li>
+
+                <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                <li><a data-translate="proyectos" href="proyectos.html">Nuestros Proyectos</a></li>
+
+                <li><a data-translate="consultoria" href="consultoria.html">Consultoria</a></li>
+
+                <li><a data-translate="nosotros" href="nosotros.html">Nosotros</a></li>
+
+                <li><a data-translate="farmaciasDisponibles" href="localidades.html">Ubicaciones</a></li>
+
+                <li><a data-translate="farmaciaVirtual" href="portada.html">Farmacia Virtual 360°</a></li>
+
+
+            </ul>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="footer-section">
+            <h3 data-translate="siguenos">Siguenos en</h3>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><img src="img/facebook.svg" alt="Facebook"
+                        height="50px"></a> <!-- Icono de Facebook -->
+                <a href="https://Youtube.com" target="_blank"><img src="img/youtube.svg" alt="Youtube"
+                        height="50px"></a> <!-- Icono de Youtube -->
+                <a href="https://instagram.com" target="_blank"><img src="img/instagram.svg" alt="Instagram"
+                        height="50px"></a> <!-- Icono de Instagram -->
+                <a href="https://linkedin.com" target="_blank"><img src="img/linkedin.svg" alt="LinkedIn"
+                        height="50px"></a> <!-- Icono de LinkedIn -->
+            </div>
+        </div>
+
+
+        <!-- Sección de derechos de autor -->
+        <div class="footerCopy">
+            <p data-translate="copyr">&copy; 2021 Farmacia Emma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- libreria FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/398e7a576f.js" crossorigin="anonymous"></script>
+
+    <script src="js/jquery.min.js"></script>
+
+    <script src="js/inicio.js"></script>
+    <script src="js/nosotros.js"></script>
+
+    <script src="js/traductor.js"></script>
+    <script src="js/tiraFotografica.js"></script>
+
+        <!-- CARGAS JS LIBRERIAS CONTADOR NUMERICO -->
+    <!-- velocidad del contador (main.js) linea 155aprox -->
+
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                /*columnas de fotos */
+                items: 4,
+                /*carga rapida de fotos*/
+                lazyLoad: true,
+                /*carga automatica de la tira*/
+                autoPlay: true,
+                navigation: true,
+                /*permite ocultar los textos prev y next */
+                navigationText: ["", ""],
+                /*permite ir del final al inicio*/
+                rewindNav: true,
+                /*valores por defecto. si le ponen los 3 en valor true aparecen los numeros 1 2 3 para navegar*/
+                scrollPerPage: false,
+                pagination: false,
+                paginationNumbers: false,
+            });
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

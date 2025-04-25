@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="farmaciaEmma">Farmacia Emma</title>
+    <link rel="shortcut icon" href="img/logo3-removebg-preview.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/inicio.css">
+
+    <!-- carusel hojas de estilo  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css"
+        integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <!-- SweetAlert -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+
+
+
+    <nav class="menu-horizontal">
+
+        <div id="logo"><img src="img/logo3-removebg-preview.png" alt="Farmacia Emma"></div>
+
+        <!-- Menú desplegable -->
+
+        <ul>
+            <li><a data-translate="inicio" href="#">Inicio</a></li>
+
+            <li class="has-submenu">
+                <a data-translate="productos" href="#">Productos</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none; color: #eeea05;" data-translate="farmaciaOnline"
+                            href="farmaciaOnline.html">Farmacia Online</a></li>
+
+                    <li><a style="text-decoration: none;" data-translate="productosDestacados"
+                            href="#inicioProductos">Productos
+                            Destacados</a></li>
+
+
+                    <li><a style="text-decoration: none;" data-translate="instrumentos"
+                            href="instrumentos.html">Instrumentos
+                            Farmaceuticos</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="servicios" href="#">Servicios</a>
+                <ul class="submenu">
+                    <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                    <li><a data-translate="consultoria" href="consultoria.html">Consultoría</a></li>
+                    <li><a data-translate="CalculadoraPeso" href="calculadoraPeso.html">Calculadora de Peso</a></li>
+
+                </ul>
+            </li>
+
+            <li><a style="text-decoration: none;" data-translate="contactanos" href="#InicioContactanos">Contactanos</a>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="acercaDe" href="#">Acerca de</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none;" data-translate="nosotros" href="nosotros.html">Nosotros</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="proyectos" href="proyectos.html">Proyectos</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciasDisponibles"
+                            href="localidades.html">Ubicaciones</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciaVirtual" href="portada.html">Farmacia
+                            Virtual 360°</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+
+        <!-- Inico de sesion / registrarse -->
+
+
+        <div class="contenedorBoton">
+            <img class="botonIcono" src="img/login.png" alt="login">
+            <div class="menuDesplegable">
+                <button class="btnLogin" data-translate="iniciarSesion" onclick="mostrarIniciarSesion()">Iniciar
+                    Sesion</button>
+                <button class="btnLogin" data-translate="registrarse"
+                    onclick="mostrarRegistrarse()">Registrarse</button>
+
+            </div>
+        </div>
+
+
+
+        <div id="seccionDesplegable">
+            <div>
+                <span id="botonCerrar"></span>
+
+                <form id="formularioInicio" style="display: none;">
+                    <button id="botonAbrir" onclick=""></button>
+
+                    <button id="botonRegistrarse" onclick=""></button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <!-- boton Traducir pagina -->
+        <!-- From Uiverse.io by csemszepp -->
+        <label class="switch">
+            <input onclick="changeLanguage()" type="checkbox" class="chbox">
+            <div class="slider slider--0">EN</div>
+            <div class="slider slider--1">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="slider slider--2"></div>
+            <div class="slider slider--3">ES</div>
+        </label>
+
+
+
+        <!-- Carrito de compras -->
+        <div class="carrito-icono" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contadorCarrito">0</span>
+        </div>
+
+
+    </nav>
+
+
+    <!-- Inicio -->
+
+    <div id="Principal"></div><br><br><br>
+
+    <section id="inicio">
+        <div class="contenedorInicio">
+            <div class="BtnInicio">
+                <img src="img/Inicio1.png" alt="Farmacia" class="imagenInicio">
+                <img src="img/Inicio2.jpg_large" alt="Farmacia" class="imagenInicio">
+                <img src="img/Inicio3.jpg" alt="Farmacia" class="imagenInicio">
+                <img src="img/Inicio4.jpg" alt="Farmacia" class="imagenInicio">
+                <img src="img/Inicio5.jpg" alt="Farmacia" class="imagenInicio">
+                <img src="img/Inicio6.png" alt="Farmacia" class="imagenInicio">
+
+
+            </div>
+            <button class="flecha flechaIzquierda">&#10094;</button>
+            <button class="flecha flechaDerecha">&#10095;</button>
+        </div>
+
+
+    </section>
+
+
+    <main>
+
+        <div id="inicioProductos"></div><br>
+
+        <div class="container-sm-6 pt-5">
+
+            <!-- Sección de productos -->
+            <h2 data-translate="nuestrosProductos" class="container text-center" style="color: #E8EDE7;">Nuestros
+                Productos Destacados</h2><br>
+
+            <div class="products_container">
+
+                <!-- web avatars: https://www.freepik.es/search?format=search&query=avatars&type=vector -->
+
+                <!-- owl-theme centra las flechas de una vez-->
+                <div class="products owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/Amoxilina-removebg-preview.png" alt="Amoxilina">
+                                <h3>Amoxilina</h3>
+                                <p>$9.50</p>
+
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('Amoxilina', 9.5, 'img/Amoxilina-removebg-preview.png')">Agregar
+                                    al carrito</button>
+                                <button data-translate="info"
+                                    onclick="mostrarInfo('Amoxilina', 'Alivia el dolor y reduce la fiebre')">Informacion</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/Aspirina-removebg-preview.png" alt="Aspirina">
+                                <h3>Aspirina</h3>
+                                <p>$8.50</p>
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('Aspirina', 8.5, 'img/Aspirina-removebg-preview.png')">Agregar
+                                    al
+                                    carrito</button>
+                                <button data-translate="info"
+                                    onclick="mostrarInfo('Aspirina', 'Antiinflamatorio y analgésico')">Informacion</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/CanesOral-removebg-preview.png" alt="Canes Oral">
+                                <h3>Canel Oral</h3>
+                                <p>$7.50</p>
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('CanesOral', 7.5, 'img/CanesOral-removebg-preview.png')">Agregar
+                                    al carrito</button>
+                                <button data-translate="info"
+                                    onclick="mostrarInfo('Canes Oral', 'Antiinflamatorio y analgésico')">Informacion</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item">
+
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/doloran-removebg-preview.png" alt="Doloran">
+                                <h3>Doloran</h3>
+                                <p>$6.80</p>
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('Doloran', 6.8, 'img/doloran-removebg-preview.png')">Agregar
+                                    al
+                                    carrito</button>
+                                <button data-translate="info"
+                                    onclick="mostrarInfo('Doloran', 'Antiinflamatorio y analgésico')">Informacion</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/Ibuprofeno-removebg-preview.png" alt="Ibuprofeno">
+                                <h3>Ibuprofeno</h3>
+                                <p>$7.00</p>
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('Ibuprofeno', 7, 'img/Ibuprofeno-removebg-preview.png')">Agregar
+                                    al carrito</button>
+                                <button data-translate="info" data-translate="info"
+                                    onclick="mostrarInfo('Ibuprofeno', 'Antiinflamatorio y analgésico')">Informacion</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/Pulmobronk-removebg-preview.png" alt="Pulmobronk">
+                                <h3>Pulmobronk</h3>
+                                <p>$15.00</p>
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('Pulmobronk', 15, 'img/Pulmobronk-removebg-preview.png')">Agregar
+                                    al carrito</button>
+                                <button data-translate="info" data-translate="info"
+                                    onclick="mostrarInfo('Pulmobronk', 'Alivia la tos y disuelve las flemas.')">Informacion</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/Tranofen_DX-removebg-preview.png" alt="Tranofen DX">
+                                <h3>Tranofen DX</h3>
+                                <p>$17.00</p>
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('Tranofen DX', 17, 'img/Tranofen_DX-removebg-preview.png')">Agregar
+                                    al carrito</button>
+                                <button data-translate="info" data-translate="info"
+                                    onclick="mostrarInfo('Tranofen DX', 'Manejo sintomático a corto plazo del dolor agudo a moderado o ha intenso en pacientes adultos.')">Informacion</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="item">
+
+                        <div class="contenedor-imagen">
+                            <div class="producto" data-categoria="medicamentos">
+                                <img src="img/Loratadina-removebg-preview.png" alt="Loratadina">
+                                <h3>Loratadina</h3>
+                                <p>$7.00</p>
+                                <button data-translate="agregarCarrito"
+                                    onclick="agregarAlCarrito('Loratadina', 7, 'img/Loratadina-removebg-preview.png')">Agregar
+                                    al carrito</button>
+                                <button data-translate="info" data-translate="info"
+                                    onclick="mostrarInfo('Loratadina', 'Aliviar temporalmente los síntomas de la fiebre del heno (alergia al polen, al polvo o a otras sustancias presentes en el aire) y otras alergias. ')">Informacion</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- suscripcion -->
+
+        <form id="Suscribete">
+            <div class="input-group Desplazamiento">
+                <input type="email" id="inputEmail" class="Email" name="Email"
+                    placeholder="Suscribete@farmaciaEmma.co.cr">
+                <input id="submit" data-translate="Suscribete" value="Subscribete y Ahorra" type="submit">
+
+            </div>
+
+        </form>
+
+
+        <!-- Sección de informacion de envios -->
+
+        <section id="servicioEnvio" class="Desplazamiento">
+
+            <div class="infoEnvio">
+
+                <h1 data-translate="infoEnvioH1"><b>Servicio de Entregas a Domicilio</b></h1> <br>
+                <p data-translate="infoEnvioP">Estimado paciente, te informamos que por políticas de la
+                    farmacia no brindamos el servicio de entrega a
+                    domicilio después de las 4 p.m. en las siguientes zonas:
+                <p>
+                    <span data-translate="infoEnvioSpan">*Barrio San Martin, El coco, Cocal, Cuatro Reinas, San Alberto,
+                        Los
+                        Carmenes*</span>
+            </div>
+        </section>
+
+        <!-- Informacion de servicios -->
+
+
+        <div class="container text-center" id="inicioServicios"></div><br><br> <br><br><br>
+
+        <section id="servicios" class="Desplazamiento">
+
+            <h1 data-translate="nuestrosServicios" class="container text-center">Nuestros Servicios</h1>
+
+            <div class="contenedorServicios">
+
+                <div class="NuestrosServicios">
+                    <img src="img/img1.jpg" alt="Dispensación de Medicamentos" class="imagenInfo"><br>
+
+                    <p class="container text-center" id="BtnServ"><b data-translate="nuestrosServiciosB">Dispensación de
+                            Medicamentos </b></p>
+                    <button data-translate="nuestrosServiciosBoton" class="botonMasInfo">Más Información</button>
+
+                    <p class="infoAdicional" style="display: none;"><br> <b data-translate="Descripcion1">Descripcion:
+                            Proponcionamos medicamentos
+                            recetados y de venta libre, asegurándonos de que los pacientes reciban el tratamiento
+                            adecuado.</b>
+                        <br><br>
+
+                        <b data-translate="beneficio1">Beneficios: Garantizamos que los medicamentos sean seguros,
+                            efectivos y estén
+                            correctamente
+                            etiquetados con instrucciones claras para su uso.</b>
+                    </p>
+
+                    <button class="botonVolver" style="display: none;" data-translate="cerrar">Cerrar</button>
+
+
+
+
+
+                </div>
+
+                <div class="NuestrosServicios">
+                    <img src="img/AsesoramientoFarmacéutico.webp" alt="Asesoramiento Farmacéutico" class="imagenInfo">
+                    <br>
+
+                    <p class="container text-center" id="BtnServ"><b data-translate="nuestrosServiciosB1">Asesoramiento
+                            Farmaceutico </b></p>
+
+                    <button data-translate="nuestrosServiciosBoton" class="botonMasInfo">Más Información</button>
+
+                    <p class="infoAdicional" style="display: none;"> <br>
+                        <b data-translate="Descripcion2">Descripción: Ofrecemos asesoramiento personalizado sobre el uso
+                            correcto de
+                            medicamentos, posibles efectos secundarios, interacciones y recomendaciones para el manejo
+                            de
+                            enfermedades.</b> <br><br>
+
+                        <b data-translate="beneficio2">Beneficios: Ayudamos a los pacientes a entender su tratamiento y
+                            a usarlo de manera segura y efectiva.</b>
+                    </p>
+
+                    <button class="botonVolver" style="display: none;" data-translate="cerrar">Cerrar</button>
+
+
+                </div>
+
+                <div class="NuestrosServicios">
+                    <img src="img/ServiciosDeSaludPreventiva.jpg" alt="Servicios de Salud Preventiva"
+                        class="imagenInfo">
+
+                    <br>
+
+                    <p class="container text-center" id="BtnServ"><b data-translate="nuestrosServiciosB2">Servicios de
+                            Salud
+                            Preventiva </b></p>
+
+                    <button data-translate="nuestrosServiciosBoton" class="botonMasInfo">Más Información</button>
+
+                    <p class="infoAdicional" style="display: none;"><br>
+                        <b data-translate="Descripcion3">Descripción: Ofrecemos vacunación (por ejemplo, contra la
+                            gripe, el COVID-19 o el virus del papiloma humano), pruebas de detección de enfermedades
+                            (como diabetes, hipertensión o
+                            colesterol) y programas de deshabituación tabáquica.</b> <br><br>
+
+                        <b data-translate="beneficio3">Beneficios: Contribuimos a la prevención de enfermedades y
+                            promuevemos estilos de vida
+                            saludables.</b>
+                    </p>
+
+                    <button class="botonVolver" style="display: none;" data-translate="cerrar">Cerrar</button>
+
+                </div>
+
+                <div class="NuestrosServicios">
+                    <img src="img/PreparaciónMedicamentosPersonalizados.jpg"
+                        alt="Preparación de Medicamentos Personalizados" class="imagenInfo">
+
+                    <br>
+
+                    <p class="container text-center" id="BtnServ"><b data-translate="nuestrosServiciosB3">Preparacion de
+                            Medicamentos Personalizados </b></p>
+                    <button data-translate="nuestrosServiciosBoton" class="botonMasInfo">Más Información</button>
+
+                    <p class="infoAdicional" style="display: none;"><br>
+                        <b data-translate="Descripcion4">Descripción: Contamos con servicio de farmacia magistral, donde
+                            preparamos medicamentos específicos según las necesidades individuales del paciente, como
+                            fórmulas pediátricas, cremas dermatológicas o medicamentos sin ciertos excipientes.</b>
+                        <br><br>
+
+                        <b data-translate="beneficio4">Beneficios: Ofrecemos soluciones personalizadas para pacientes
+                            con necesidades especiales.</b>
+                    </p>
+
+                    <button class="botonVolver" style="display: none;" data-translate="cerrar">Cerrar</button>
+
+                </div>
+
+                <div class="NuestrosServicios">
+                    <img src="img/CuidadoSalud.jpg" alt="Venta de Productos para el Cuidado de la Salud"
+                        class="imagenInfo">
+
+                    <br>
+
+                    <p class="container text-center" id="BtnServ"><b data-translate="nuestrosServiciosB4">Venta de
+                            Productos
+                            para el Cuidado de la Salud </b></p>
+
+                    <button data-translate="nuestrosServiciosBoton" class="botonMasInfo">Más Información</button>
+
+                    <p class="infoAdicional" style="display: none;"><br>
+                        <b data-translate="Descripcion5">Descripción: Además de medicamentos, tambien vendemos productos
+                            como vitaminas, suplementos alimenticios, productos de higiene personal, dispositivos
+                            médicos (tensiómetros, glucómetros) y artículos de primeros auxilios. </b> <br><br>
+
+                        <b data-translate="beneficio5">Beneficios: Facilitamos el acceso a productos esenciales para el
+                            cuidado diario de la salud.</b>
+                    </p>
+
+                    <button class="botonVolver" style="display: none;" data-translate="cerrar">Cerrar</button>
+
+                </div>
+
+                <div class="NuestrosServicios">
+                    <img src="img/ServiciosAdicionales.jpg  " alt="Servicios Adicionales" class="imagenInfo">
+
+                    <br>
+
+                    <p class="container text-center" id="BtnServ"><b data-translate="nuestrosServiciosB5">Servicios
+                            Adicionales </b></p>
+
+                    <button data-translate="nuestrosServiciosBoton" class="botonMasInfo">Más Información</button>
+
+                    <p class="infoAdicional" style="display: none;"><br>
+                        <b data-translate="Adicionales1">Entrega a Domicilio: Ofrecemos entregas de medicamentos
+                            domicilio, especialmente para pacientes con movilidad reducida.</b> <br><br>
+
+                        <b data-translate="Adicionales2">Programas de Fidelización: Descuentos o beneficios para
+                            clientes frecuentes.</b> <br><br>
+
+                        <b data-translate="Adicionales3">Educación para la Salud: Charlas o talleres sobre temas de
+                            salud, como nutrición, manejo del estrés o prevención de enfermedades.</b>
+                    </p>
+
+                    <button class="botonVolver" style="display: none;" data-translate="cerrar">Cerrar</button>
+
+                </div>
+            </div>
+
+        </section>
+
+        <div id="InicioContactanos"></div>
+
+        <!-- Sección de Contacto -->
+
+        <section id="contacto" class="Desplazamiento">
+
+            <div class="contact-form">
+
+                <form id="formulario-contacto">
+                    <h2 data-translate="contactanos">Contactanos</h2>
+                    <div class="form-group">
+                        <label data-translate="name" for="name">Nombre Completo:</label>
+                        <input style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" type="text" id="nombreCompleto" name="name">
+
+
+                        <label data-translate="email" for="email">Correo Electrónico:</label>
+                        <input style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" type="email" id="correoElectronico" name="email">
+
+
+                        <label data-translate="phone" for="phone">Numero de Telefono:</label>
+                        <input style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" type="tel" id="phone" name="phone">
+
+
+                        <label data-translate="message" for="message">Asunto:</label>
+                        <textarea style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" id="message" name="message" rows="3"></textarea>
+
+                        <button data-translate="enviar" id="btn-enviar" type="submit">Enviar</button>
+                </form>
+
+                <div class="whatsapp-contact">
+                    <p data-translate="whatsapp">O contactanos por WhatsApp:</p>
+                    <a href="https://wa.me/1234567890" target="_blank">
+                        <img src="img/whatsapp.svg" alt="WhatsApp">
+                    </a>
+
+                </div>
+
+        </section>
+
+
+
+
+        <div class="carrito-desplegable" id="carritoDesplegable">
+            <h2 data-translate="carritoCompras">Carrito de Compras</h2>
+            <div id="listaCarrito"></div>
+            <div class="totales">
+                <p>Subtotal: <span id="subtotal">$0.00</span></p>
+                <p>IVA (16%): <span id="iva">$0.00</span></p>
+                <label>
+                    <input type="checkbox" id="envioCheckbox" onchange="actualizarTotales()"> ¿Desea envío? ($5.00)
+                </label>
+                <p>Envío: <span id="envio">$0.00</span></p>
+                <p>Total: <span id="total">$0.00</span></p>
+            </div>
+            <button data-translate="vaciarCarrito" class="vaciarCarrito" onclick="vaciarCarrito()">Vaciar
+                Carrito</button>
+            <button data-translate="pagar" class="pagar" onclick="pagar()">Pagar</button>
+        </div>
+    </main>
+
+
+
+
+    <button class="botonFeedback" onclick="mostrarEncuesta()">Feedback</button>
+
+    <div class="ventanaEncuesta" id="ventanaEncuesta">
+        <div class="encabezado-encuesta">
+            <h1 data-translate="encuestaSatisfaccion">Encuesta de Satisfaccion</h1>
+            <p data-translate="opinion">Farmacia Emma - Tu opinión nos ayuda a mejorar</p>
+        </div>
+
+        <form id="formularioEncuesta" class="formulario-encuesta">
+            <!-- Información del cliente -->
+            <div class="grupo-pregunta">
+                <label data-translate="nombreCompleto" class="etiqueta-pregunta" for="nombre">1. Nombre completo <span
+                        class="marcador-requerido">*</span></label>
+                <input type="text" id="nombre" class="campo-texto" required>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="correoElectronicoEncuesta" class="etiqueta-pregunta" for="email">2. Correo
+                    electrónico <span class="marcador-requerido">*</span></label>
+                <input type="email" id="email" class="campo-texto" required>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="edad" class="etiqueta-pregunta" for="edad">3. Edad</label>
+                <input type="number" id="edad" class="campo-texto" min="1" max="120">
+            </div>
+
+            <!-- Preguntas sobre la farmacia -->
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta4" class="etiqueta-pregunta">4. ¿Con qué frecuencia visita nuestra
+                    farmacia? <span class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia1" name="frecuencia" value="diario" required>
+                        <label data-translate="pregunta4A" for="frecuencia1">Diario o casi diario</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia2" name="frecuencia" value="semanal">
+                        <label data-translate="pregunta4B" for="frecuencia2">Semanal</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia3" name="frecuencia" value="mensual">
+                        <label data-translate="pregunta4C" for="frecuencia3">Mensual</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia4" name="frecuencia" value="ocasional">
+                        <label data-translate="pregunta4D" for="frecuencia4">Ocasionalmente</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta5" class="etiqueta-pregunta">5. ¿Qué productos suele comprar en nuestra
+                    farmacia? (Seleccione todos
+                    los que apliquen)</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto1" name="productos" value="medicamentos">
+                        <label data-translate="pregunta5A" for="producto1">Medicamentos con receta</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto2" name="productos" value="genericos">
+                        <label data-translate="pregunta5B" for="producto2">Medicamentos genéricos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto3" name="productos" value="cosmeticos">
+                        <label data-translate="pregunta5C" for="producto3">Productos cosméticos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto4" name="productos" value="cuidado_personal">
+                        <label data-translate="pregunta5D" for="producto4">Artículos de cuidado personal</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto5" name="productos" value="suplementos">
+                        <label data-translate="pregunta5E" for="producto5">Suplementos vitamínicos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto6" name="productos" value="otros">
+                        <label data-translate="pregunta5F" for="producto6">Otros (especifique abajo)</label>
+                    </div>
+                </div>
+                <textarea name="productos_otros" class="area-texto"
+                    placeholder="Especifique otros productos que compre regularmente..."></textarea>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta6" class="etiqueta-pregunta">6. Califique la variedad de productos que
+                    ofrecemos <span class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad1" name="variedad" value="5" required>
+                        <label data-translate="pregunta6A" for="variedad1">Excelente - Gran variedad para todas mis
+                            necesidades</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad2" name="variedad" value="4">
+                        <label data-translate="pregunta6B" for="variedad2">Muy buena - Casi siempre encuentro lo que
+                            busco</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad3" name="variedad" value="3">
+                        <label data-translate="pregunta6C" for="variedad3">Buena - A veces falta algún producto</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad4" name="variedad" value="2">
+                        <label data-translate="pregunta6D" for="variedad4">Regular - Frecuentemente no encuentro lo que
+                            necesito</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad5" name="variedad" value="1">
+                        <label data-translate="pregunta6E" for="variedad5">Mala - Muy poca variedad</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta7" class="etiqueta-pregunta">7. ¿Cómo calificaría los precios de nuestros
+                    productos? <span class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="precios1" name="precios" value="5" required>
+                        <label data-translate="pregunta7A" for="precios1">Muy económicos - Los mejores precios de la
+                            zona</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios2" name="precios" value="4">
+                        <label data-translate="pregunta7B" for="precios2">Económicos - Precios competitivos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios3" name="precios" value="3">
+                        <label data-translate="pregunta7C" for="precios3">Comparables a la competencia - Similares a
+                            otras farmacias</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios4" name="precios" value="2">
+                        <label data-translate="pregunta7D" for="precios4">Algo elevados - Más caros que en otros
+                            lugares</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios5" name="precios" value="1">
+                        <label data-translate="pregunta7E" for="precios5">Muy elevados - Precios significativamente más
+                            altos</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta8" class="etiqueta-pregunta">8. ¿Qué métodos de pago utiliza con más
+                    frecuencia? (Seleccione todos
+                    los que apliquen)</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago1" name="metodos_pago" value="efectivo">
+                        <label data-translate="pregunta8A" for="pago1">Efectivo</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago2" name="metodos_pago" value="tarjeta_debito">
+                        <label data-translate="pregunta8B" for="pago2">Tarjeta de débito</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago3" name="metodos_pago" value="tarjeta_credito">
+                        <label data-translate="pregunta8C" for="pago3">Tarjeta de crédito</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago4" name="metodos_pago" value="transferencia">
+                        <label data-translate="pregunta8D" for="pago4">Transferencia bancaria</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago5" name="metodos_pago" value="app">
+                        <label data-translate="pregunta8E" for="pago5">Aplicaciones móviles (Mercado Pago, etc.)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta9" class="etiqueta-pregunta">9. ¿Ha utilizado nuestro servicio de entrega
+                    a domicilio?</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="domicilio1" name="domicilio" value="si">
+                        <label data-translate="pregunta9A" for="domicilio1">Sí</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="domicilio2" name="domicilio" value="no">
+                        <label data-translate="pregunta9B" for="domicilio2">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta10" class="etiqueta-pregunta" for="domicilio_exp">10. Si respondió "Sí" a
+                    la pregunta anterior, ¿cómo
+                    fue su experiencia con el servicio a domicilio?</label>
+                <textarea id="domicilio_exp" name="domicilio_exp" class="area-texto"
+                    placeholder="Describa su experiencia con nuestro servicio de entrega a domicilio..."></textarea>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta11" class="etiqueta-pregunta">11. ¿Cómo calificaría la atención de
+                    nuestro personal? <span class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion1" name="atencion_personal" value="5" required>
+                        <label data-translate="pregunta11A" for="atencion1">Excelente - Muy amables, conocedores y
+                            serviciales</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion2" name="atencion_personal" value="4">
+                        <label data-translate="pregunta11B" for="atencion2">Muy buena - Atentos y resolvieron mis
+                            dudas</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion3" name="atencion_personal" value="3">
+                        <label data-translate="pregunta11C" for="atencion3">Buena - Correcta pero sin destacar</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion4" name="atencion_personal" value="2">
+                        <label data-translate="pregunta11D" for="atencion4">Regular - Algunos empleados podrían
+                            mejorar</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion5" name="atencion_personal" value="1">
+                        <label data-translate="pregunta11E" for="atencion5">Mala - Poco amables o desinteresados</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta12" class="etiqueta-pregunta" for="mejora_atencion">12. ¿Qué sugerencias
+                    tiene para mejorar nuestra
+                    atención al cliente?</label>
+                <textarea id="mejora_atencion" name="mejora_atencion" class="area-texto"
+                    placeholder="Escriba sus sugerencias para mejorar nuestro servicio..."></textarea>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta13" class="etiqueta-pregunta">13. ¿Conoce nuestros servicios adicionales?
+                    (Seleccione todos los que
+                    conozca)</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio1" name="servicios_adicionales" value="medicion">
+                        <label data-translate="pregunta13A" for="servicio1">Medición de presión arterial/glucosa</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio2" name="servicios_adicionales" value="vacunacion">
+                        <label data-translate="pregunta13B" for="servicio2">Vacunación</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio3" name="servicios_adicionales" value="asesoria">
+                        <label data-translate="pregunta13C" for="servicio3">Asesoría farmacéutica</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio4" name="servicios_adicionales" value="programa">
+                        <label data-translate="pregunta13D" for="servicio4">Programas de fidelización</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio5" name="servicios_adicionales" value="ninguno">
+                        <label data-translate="pregunta13E" for="servicio5">No conozco ninguno</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta14" class="etiqueta-pregunta">14. ¿Recomendaría nuestra farmacia a
+                    familiares o amigos? <span class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar1" name="recomendacion" value="5" required>
+                        <label data-translate="pregunta14A" for="recomendar1">Definitivamente sí - Siempre la
+                            recomiendo</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar2" name="recomendacion" value="4">
+                        <label data-translate="pregunta14B" for="recomendar2">Probablemente sí - En general es
+                            buena</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar3" name="recomendacion" value="3">
+                        <label data-translate="pregunta14C" for="recomendar3">No estoy seguro - Depende de lo que
+                            necesiten</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar4" name="recomendacion" value="2">
+                        <label data-translate="pregunta14D" for="recomendar4">Probablemente no - Prefiero otras
+                            opciones</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar5" name="recomendacion" value="1">
+                        <label data-translate="pregunta14E" for="recomendar5">Definitivamente no - No la
+                            recomendaría</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label class="etiqueta-pregunta" for="comentarios">15. ¿Tiene algún comentario adicional sobre nuestros
+                    productos o servicios?</label>
+                <textarea id="comentarios" name="comentarios" class="area-texto"
+                    placeholder="Escriba aquí cualquier comentario adicional que desee compartir..."></textarea>
+            </div>
+
+            <div class="contenedor-botones">
+                <button data-translate="enviar" type="button" class="boton boton-primario"
+                    onclick="evaluarEncuestaFarmacia()">Enviar
+                    Encuesta</button>
+                <button data-translate="limpiarForm" type="button" class="boton boton-secundario"
+                    onclick="limpiarFormularioFarmacia()">Limpiar
+                    Formulario</button>
+
+            </div>
+        </form>
+
+        <div id="seccionResultados" class="seccion-resultados">
+            <h3>Resumen de tus respuestas</h3>
+            <div class="resultado-item">
+                <p id="resultadoFrecuencia"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoAtencion"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoServicios"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoRecomendacion"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoMejoras"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-section">
+            <h3 data-translate="contactanos">Contactanos</h3>
+            <p data-translate="direccion"> <img src="img/direction.svg" alt="direccion" height="35px"> Dirección: Calle
+                Falsa 123, Ciudad, País
+            </p>
+            <p> <img src="img/Contactanos.svg" alt="Contactanos" height="35px"> +506 4560 7809</p>
+            <p> <img src="img/email.svg" alt="Email" height="35px"> info@farmaciaemma.com</p>
+
+            <iframe id="Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1637572.0349856855!2d-104.81044937428791!3d38.84777619594149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1740525684159!5m2!1ses!2scr"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <!-- Sección de enlaces rápidos -->
+        <div class="footer-section">
+            <h3 data-translate=rapidos>Enlaces Rapidos</h3>
+            <ul class="link-rap">
+
+                <li><a data-translate="inicio" href="#Principal">Inicio</a></li>
+
+                <li><a data-translate="farmaciaOnline" href="#farmaciaonline">Farmacia Online</a></li>
+
+                <li><a data-translate="nuestrosProductos" href="#inicioProductos">Productos Destacados</a></li>
+
+                <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                <li><a data-translate="proyectos" href="proyectos.html">Nuestros Proyectos</a></li>
+
+                <li><a data-translate="consultoria" href="consultoria.html">Consultoria</a></li>
+
+                <li><a data-translate="nosotros" href="nosotros.html">Nosotros</a></li>
+
+                <li><a data-translate="farmaciasDisponibles" href="localidades.html">Ubicaciones</a></li>
+
+                <li><a data-translate="farmaciaVirtual" href="portada.html">Farmacia Virtual 360°</a></li>
+
+            </ul>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="footer-section">
+            <h3 data-translate="siguenos">Siguenos en</h3>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><img src="img/facebook.svg" alt="Facebook"
+                        height="50px"></a> <!-- Icono de Facebook -->
+                <a href="https://Youtube.com" target="_blank"><img src="img/youtube.svg" alt="Youtube"
+                        height="50px"></a> <!-- Icono de Youtube -->
+                <a href="https://instagram.com" target="_blank"><img src="img/instagram.svg" alt="Instagram"
+                        height="50px"></a> <!-- Icono de Instagram -->
+                <a href="https://linkedin.com" target="_blank"><img src="img/linkedin.svg" alt="LinkedIn"
+                        height="50px"></a> <!-- Icono de LinkedIn -->
+            </div>
+        </div>
+
+
+        <!-- Sección de derechos de autor -->
+        <div class="footerCopy">
+            <p data-translate="copyr">&copy; 2021 Farmacia Emma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <!-- CARGAR LA LIBRERIA EMAIL.JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- libreria SWEETALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- libreria FONTAWESOME-->
+
+    <script src="https://kit.fontawesome.com/398e7a576f.js" crossorigin="anonymous"></script>
+
+
+    <!-- interactividad Lottie JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.13/lottie.min.js"></script>
+
+    <!-- libreria Lottie JS-->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
+    
+    <script>
+      // Inicializa EmailJS con Public Key
+      (function() {
+        emailjs.init('m8L4I9fK5JbICKIZK'); 
+      })();
+    </script>
+
+
+    <!-- programacion JS-->
+    <script src="js/inicio.js"></script>
+    <script src="js/formularioContacto.js"></script>
+    <script src="js/suscripcion.js"></script>
+    <script src="js/encuesta2.js"></script>
+    <script src="js/traductor.js"></script>
+
+    
+
+
+
+
+    <!-- CARGA JS SCRIPT carousel  productos destacados -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js "
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js "
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin=" anonymous " referrerpolicy="no-referrer "></script>
+
+    <!-- CONFIGURACION carousel productos destacados JS -->
+
+    <script>
+        // clase privada de la libreria
+        $('.owl-carousel').owlCarousel({
+            // ciclo
+
+            loop: true,
+
+            // margen entre las fotos
+
+            margin: 5,
+
+            // navegacion con flechas con valor true
+
+            nav: true,
+
+            // agregar radio de navegacion con valor true
+
+            dots: false,
+
+            // se autoejecuta al iniciar con el valor true 
+
+            autoplay: true,
+
+            // parte responsive
+
+            responsive: {
+                0: {
+                    items: 1
+                },
+
+                600: {
+                    items: 2
+                },
+
+                1000: {
+                    items: 4
+                },
+            }
+
+
+        })
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

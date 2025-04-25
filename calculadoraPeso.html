@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo3-removebg-preview.ico" type="image/x-icon">
+
+    <title>Calculadora de Peso Ideal - Farmacia Emma</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/calculadoraPeso.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+    
+    <nav class="menu-horizontal">
+
+        <div id="logo"><img src="img/logo3-removebg-preview.png" alt="Farmacia Emma"></div>
+
+        <!-- Menú desplegable -->
+
+        <ul>
+            <li><a data-translate="inicio" href="inicio.html">Inicio</a></li>
+
+            <li class="has-submenu">
+                <a data-translate="productos" href="#">Productos</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none; color: #eeea05;" data-translate="farmaciaOnline"
+                            href="farmaciaOnline.html">Farmacia Online</a></li>
+
+                    <li><a style="text-decoration: none;" data-translate="productosDestacados"
+                            href="#inicioProductos">Productos
+                            Destacados</a></li>
+
+
+                    <li><a style="text-decoration: none;" data-translate="instrumentos"
+                            href="instrumentos.html">Instrumentos
+                            Farmaceuticos</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="servicios" href="#">Servicios</a>
+                <ul class="submenu">
+                    <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                    <li><a data-translate="consultoria" href="consultoria.html">Consultoría</a></li>
+                    <li><a data-translate="CalculadoraPeso" href="calculadoraPeso.html">Calculadora de Peso</a></li>
+
+                </ul>
+            </li>
+
+            <li><a style="text-decoration: none;" data-translate="contactanos" href="#InicioContactanos">Contactanos</a>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="acercaDe" href="#">Acerca de</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none;" data-translate="nosotros" href="nosotros.html">Nosotros</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="proyectos" href="proyectos.html">Proyectos</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciasDisponibles"
+                            href="localidades.html">Ubicaciones</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciaVirtual" href="portada.html">Farmacia
+                            Virtual 360°</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+
+        <!-- Inico de sesion / registrarse -->
+
+
+        <div class="contenedorBoton">
+            <img class="botonIcono" src="img/login.png" alt="login">
+            <div class="menuDesplegable">
+                <button class="btnLogin" data-translate="iniciarSesion" onclick="mostrarIniciarSesion()">Iniciar
+                    Sesion</button>
+                <button class="btnLogin" data-translate="registrarse"
+                    onclick="mostrarRegistrarse()">Registrarse</button>
+
+            </div>
+        </div>
+
+
+
+        <div id="seccionDesplegable">
+            <div>
+                <span id="botonCerrar"></span>
+
+                <form id="formularioInicio" style="display: none;">
+                    <button id="botonAbrir" onclick=""></button>
+
+                    <button id="botonRegistrarse" onclick=""></button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <!-- boton Traducir pagina -->
+        <!-- From Uiverse.io by csemszepp -->
+        <label class="switch">
+            <input onclick="changeLanguage()" type="checkbox" class="chbox">
+            <div class="slider slider--0">EN</div>
+            <div class="slider slider--1">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="slider slider--2"></div>
+            <div class="slider slider--3">ES</div>
+        </label>
+
+
+
+        <!-- Carrito de compras -->
+        <div class="carrito-icono" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contadorCarrito">0</span>
+        </div>
+
+
+    </nav>
+
+<div id="calculadoraPeso">
+
+    <div class="container mt-4">
+        <h1 class="text-center text-primary">Calculadora de Peso Ideal</h1>
+    </div>
+
+    <div class="container pt-5">
+        <!-- formulario -->
+        <form id="calculadora">
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="genero">Género</label>
+                    <select class="form-select" id="genero" required>
+                        <option value="">Seleccione</option>
+                        <option value="hombre">Hombre</option>
+                        <option value="mujer">Mujer</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="edad">Edad</label>
+                    <select class="form-select" id="edad" required>
+                        <option value="">Seleccione</option>
+                        <option value="18-25">18-25 años</option>
+                        <option value="26-35">26-35 años</option>
+                        <option value="36-45">36-45 años</option>
+                        <option value="46-55">46-55 años</option>
+                        <option value="56-65">56-65 años</option>
+                        <option value="65+">65+ años</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="altura">Altura (cm)</label>
+                    <input type="number" class="form-control" id="altura" placeholder="Ej: 170" min="100" max="250" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label" for="peso">Peso actual (kg)</label>
+                    <input type="number" class="form-control" id="peso" placeholder="Ej: 70" min="30" max="200" step="0.1" required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="contextura">Contextura</label>
+                    <select class="form-select" id="contextura" required>
+                        <option value="">Seleccione</option>
+                        <option value="pequena">Pequeña</option>
+                        <option value="mediana">Mediana</option>
+                        <option value="grande">Grande</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="actividad">Nivel de actividad</label>
+                    <select class="form-select" id="actividad" required>
+                        <option value="">Seleccione</option>
+                        <option value="sedentario">Sedentario</option>
+                        <option value="ligero">Ligero</option>
+                        <option value="moderado">Moderado</option>
+                        <option value="intenso">Intenso</option>
+                        <option value="atleta">Atleta</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label class="form-label" for="objetivo">Objetivo</label>
+                    <select class="form-select" id="objetivo" required>
+                        <option value="">Seleccione</option>
+                        <option value="mantener">Mantener peso</option>
+                        <option value="bajar">Bajar de peso</option>
+                        <option value="subir">Subir de peso</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary btn-lg">Calcular</button>
+                <button type="button" id="btnLimpiar" class="btn btn-secondary btn-lg ms-3">Limpiar</button>
+            </div>
+        </form>
+
+        <div class="text-center mt-4">
+            <h2>Resultados</h2>
+            <div class="container">
+                <div id="resultado" class="row my-4">
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            Complete el formulario para calcular su peso ideal y obtener recomendaciones personalizadas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+    <div class="carrito-desplegable" id="carritoDesplegable">
+        <h2 data-translate="carritoCompras">Carrito de Compras</h2>
+        <div id="listaCarrito"></div>
+        <div class="totales">
+            <p>Subtotal: <span id="subtotal">$0.00</span></p>
+            <p>IVA (16%): <span id="iva">$0.00</span></p>
+            <label>
+                <input  type="checkbox" id="envioCheckbox" onchange="actualizarTotales()"> ¿Desea envío? ($5.00)
+            </label>
+            <p>Envío: <span id="envio">$0.00</span></p>
+            <p>Total: <span id="total">$0.00</span></p>
+        </div>
+        <button data-translate="vaciarCarrito" class="vaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button data-translate="pagar" class="pagar" onclick="pagar()">Pagar</button>
+    </div>
+
+    </div>
+
+</div>
+
+
+
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-section">
+            <h3 data-translate="contactanos">Contactanos</h3>
+            <p data-translate="direccion"> <img src="img/direction.svg" alt="direccion" height="35px"> Dirección: Calle
+                Falsa 123, Ciudad, País
+            </p>
+            <p> <img src="img/Contactanos.svg" alt="Contactanos" height="35px"> +506 4560 7809</p>
+            <p> <img src="img/email.svg" alt="Email" height="35px"> info@farmaciaemma.com</p>
+
+            <iframe id="Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1637572.0349856855!2d-104.81044937428791!3d38.84777619594149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1740525684159!5m2!1ses!2scr"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <!-- Sección de enlaces rápidos -->
+        <div class="footer-section">
+            <h3 data-translate=rapidos>Enlaces Rapidos</h3>
+            <ul class="link-rap">
+
+                <li><a data-translate="inicio" href="#Principal">Inicio</a></li>
+
+                <li><a data-translate="farmaciaOnline" href="#farmaciaonline">Farmacia Online</a></li>
+
+                <li><a data-translate="nuestrosProductos" href="#inicioProductos">Productos Destacados</a></li>
+
+                <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                <li><a data-translate="proyectos" href="proyectos.html">Nuestros Proyectos</a></li>
+
+                <li><a data-translate="consultoria" href="consultoria.html">Consultoria</a></li>
+
+                <li><a data-translate="nosotros" href="nosotros.html">Nosotros</a></li>
+
+                <li><a data-translate="farmaciasDisponibles" href="localidades.html">Ubicaciones</a></li>
+
+                <li><a data-translate="farmaciaVirtual" href="portada.html">Farmacia Virtual 360°</a></li>
+                
+
+            </ul>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="footer-section">
+            <h3 data-translate="siguenos">Siguenos en</h3>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><img src="img/facebook.svg" alt="Facebook"
+                        height="50px"></a> <!-- Icono de Facebook -->
+                <a href="https://Youtube.com" target="_blank"><img src="img/youtube.svg" alt="Youtube"
+                        height="50px"></a> <!-- Icono de Youtube -->
+                <a href="https://instagram.com" target="_blank"><img src="img/instagram.svg" alt="Instagram"
+                        height="50px"></a> <!-- Icono de Instagram -->
+                <a href="https://linkedin.com" target="_blank"><img src="img/linkedin.svg" alt="LinkedIn"
+                        height="50px"></a> <!-- Icono de LinkedIn -->
+            </div>
+        </div>
+
+
+        <!-- Sección de derechos de autor -->
+        <div class="footerCopy">
+            <p data-translate="copyr">&copy; 2021 Farmacia Emma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script src="js/db.js"></script>
+    <script src="js/expr.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/inicio.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

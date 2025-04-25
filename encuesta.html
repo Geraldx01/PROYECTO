@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo3-removebg-preview.ico" type="image/x-icon">
+
+    <title>Encuesta de Satisfacción - Farmacia Emma</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+
+    <link rel="stylesheet" href="css/encuesta.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+    <nav style="width: 100%;  margin-left: -20px;" class="menu-horizontal">
+
+        <div style="position: relative; top: 10px;" id="logo"><img src="img/logo3-removebg-preview.png" alt="Farmacia Emma"></div>
+
+        <!-- Menú desplegable -->
+
+        <button class="MenuDesplegable" onclick="MenuDesplegable()">
+
+            <span data-translate="menu" class="text">MENU</span>
+        </button>
+
+
+        <ul>
+            <li><a data-translate="inicio" href="inicio.html">Inicio</a></li>
+            <li class="has-submenu">
+                <a data-translate="productos" href="#">Productos</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciaOnline"
+                            href="farmaciaOnline.html">Farmacia Online</a></li>
+
+                    <li><a style="text-decoration: none;" data-translate="productosDestacados"
+                            href="#inicioProductos">Productos
+                            Destacados</a></li>
+
+
+                    <li><a style="text-decoration: none;" data-translate="instrumentos"
+                            href="instrumentos.html">Instrumentos
+                            Farmaceuticos</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="servicios" href="#">Servicios</a>
+                <ul class="submenu">
+                    <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                    <li><a data-translate="consultoria" href="consultoria.html">Consultoría</a></li>
+                </ul>
+            </li>
+
+            <li><a style="text-decoration: none;" data-translate="contactanos" href="#InicioContactanos">Contactanos</a>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="acercaDe" href="#">Acerca de</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none;" data-translate="nosotros" href="nosotros.html">Nosotros</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="proyectos" href="proyectos.html">Proyectos</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciasDisponibles"
+                            href="localidades.html">Ubicaciones</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciaVirtual" href="portada.html">Farmacia
+                            Virtual 360°</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+
+        <!-- Inico de sesion / registrarse -->
+
+
+        <div class="contenedorBoton">
+            <img class="botonIcono" src="img/login.png" alt="login">
+            <div class="menuDesplegable">
+                <button class="btnLogin" data-translate="iniciarSesion" onclick="mostrarIniciarSesion()">Iniciar
+                    Sesion</button>
+                <button class="btnLogin" data-translate="registrarse" onclick="mostrarRegistrarse()">Registrarse</button>
+        
+            </div>
+        </div>
+
+
+
+        <div id="seccionDesplegable">
+            <div>
+                <span id="botonCerrar"></span>
+
+                <form id="formularioInicio" style="display: none;">
+                    <button id="botonAbrir" onclick=""></button>
+
+                    <button id="botonRegistrarse" onclick=""></button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <!-- boton Traducir pagina -->
+        <!-- From Uiverse.io by csemszepp -->
+        <label class="switch">
+            <input onclick="changeLanguage()" type="checkbox" class="chbox">
+            <div class="slider slider--0">EN</div>
+            <div class="slider slider--1">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="slider slider--2"></div>
+            <div class="slider slider--3">ES</div>
+        </label>
+
+
+
+        <!-- Carrito de compras -->
+        <div class="carrito-icono" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contadorCarrito">0</span>
+        </div>
+
+
+    </nav>
+    
+    <div class="ventanaEncuesta" id="ventanaEncuesta">
+        <div class="encabezado-encuesta">
+            <h1 data-translate="encuestaSatisfaccion">Encuesta de Satisfaccion</h1>
+            <p data-translate="opinion">Farmacia Emma - Tu opinión nos ayuda a mejorar</p>
+        </div>
+
+        <form id="formularioEncuesta" class="formulario-encuesta">
+            <!-- Información del cliente -->
+            <div class="grupo-pregunta">
+                <label data-translate="nombreCompleto" class="etiqueta-pregunta" for="nombre">1. Nombre completo <span
+                        class="marcador-requerido">*</span></label>
+                <input type="text" id="nombre" class="campo-texto" required>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="correoElectronicoEncuesta" class="etiqueta-pregunta" for="email">2. Correo electrónico <span
+                        class="marcador-requerido">*</span></label>
+                <input type="email" id="email" class="campo-texto" required>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="edad" class="etiqueta-pregunta" for="edad">3. Edad</label>
+                <input type="number" id="edad" class="campo-texto" min="1" max="120">
+            </div>
+
+            <!-- Preguntas sobre la farmacia -->
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta4" class="etiqueta-pregunta">4. ¿Con qué frecuencia visita nuestra farmacia? <span
+                        class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia1" name="frecuencia" value="diario" required>
+                        <label data-translate="pregunta4A" for="frecuencia1">Diario o casi diario</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia2" name="frecuencia" value="semanal">
+                        <label data-translate="pregunta4B" for="frecuencia2">Semanal</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia3" name="frecuencia" value="mensual">
+                        <label data-translate="pregunta4C"  for="frecuencia3">Mensual</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="frecuencia4" name="frecuencia" value="ocasional">
+                        <label data-translate="pregunta4D"  for="frecuencia4">Ocasionalmente</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta5" class="etiqueta-pregunta">5. ¿Qué productos suele comprar en nuestra farmacia? (Seleccione todos
+                    los que apliquen)</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto1" name="productos" value="medicamentos">
+                        <label data-translate="pregunta5A" for="producto1">Medicamentos con receta</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto2" name="productos" value="genericos">
+                        <label data-translate="pregunta5B"  for="producto2">Medicamentos genéricos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto3" name="productos" value="cosmeticos">
+                        <label data-translate="pregunta5C"  for="producto3">Productos cosméticos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto4" name="productos" value="cuidado_personal">
+                        <label data-translate="pregunta5D"  for="producto4">Artículos de cuidado personal</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto5" name="productos" value="suplementos">
+                        <label data-translate="pregunta5E"  for="producto5">Suplementos vitamínicos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="producto6" name="productos" value="otros">
+                        <label data-translate="pregunta5F"  for="producto6">Otros (especifique abajo)</label>
+                    </div>
+                </div>
+                <textarea name="productos_otros" class="area-texto"
+                    placeholder="Especifique otros productos que compre regularmente..."></textarea>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta6" class="etiqueta-pregunta">6. Califique la variedad de productos que ofrecemos <span
+                        class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad1" name="variedad" value="5" required>
+                        <label data-translate="pregunta6A" for="variedad1">Excelente - Gran variedad para todas mis necesidades</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad2" name="variedad" value="4">
+                        <label data-translate="pregunta6B" for="variedad2">Muy buena - Casi siempre encuentro lo que busco</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad3" name="variedad" value="3">
+                        <label data-translate="pregunta6C" for="variedad3">Buena - A veces falta algún producto</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad4" name="variedad" value="2">
+                        <label data-translate="pregunta6D" for="variedad4">Regular - Frecuentemente no encuentro lo que necesito</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="variedad5" name="variedad" value="1">
+                        <label data-translate="pregunta6E" for="variedad5">Mala - Muy poca variedad</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta7" class="etiqueta-pregunta">7. ¿Cómo calificaría los precios de nuestros productos? <span
+                        class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="precios1" name="precios" value="5" required>
+                        <label data-translate="pregunta7A" for="precios1">Muy económicos - Los mejores precios de la zona</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios2" name="precios" value="4">
+                        <label data-translate="pregunta7B" for="precios2">Económicos - Precios competitivos</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios3" name="precios" value="3">
+                        <label data-translate="pregunta7C" for="precios3">Comparables a la competencia - Similares a otras farmacias</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios4" name="precios" value="2">
+                        <label data-translate="pregunta7D" for="precios4">Algo elevados - Más caros que en otros lugares</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="precios5" name="precios" value="1">
+                        <label data-translate="pregunta7E" for="precios5">Muy elevados - Precios significativamente más altos</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta8" class="etiqueta-pregunta">8. ¿Qué métodos de pago utiliza con más frecuencia? (Seleccione todos
+                    los que apliquen)</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago1" name="metodos_pago" value="efectivo">
+                        <label data-translate="pregunta8A" for="pago1">Efectivo</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago2" name="metodos_pago" value="tarjeta_debito">
+                        <label data-translate="pregunta8B" for="pago2">Tarjeta de débito</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago3" name="metodos_pago" value="tarjeta_credito">
+                        <label data-translate="pregunta8C" for="pago3">Tarjeta de crédito</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago4" name="metodos_pago" value="transferencia">
+                        <label data-translate="pregunta8D" for="pago4">Transferencia bancaria</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="pago5" name="metodos_pago" value="app">
+                        <label data-translate="pregunta8E" for="pago5">Aplicaciones móviles (Mercado Pago, etc.)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta9" class="etiqueta-pregunta">9. ¿Ha utilizado nuestro servicio de entrega a domicilio?</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="domicilio1" name="domicilio" value="si">
+                        <label data-translate="pregunta9A" for="domicilio1">Sí</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="domicilio2" name="domicilio" value="no">
+                        <label data-translate="pregunta9B" for="domicilio2">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta10" class="etiqueta-pregunta" for="domicilio_exp">10. Si respondió "Sí" a la pregunta anterior, ¿cómo
+                    fue su experiencia con el servicio a domicilio?</label>
+                <textarea id="domicilio_exp" name="domicilio_exp" class="area-texto"
+                    placeholder="Describa su experiencia con nuestro servicio de entrega a domicilio..."></textarea>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta11" class="etiqueta-pregunta">11. ¿Cómo calificaría la atención de nuestro personal? <span
+                        class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion1" name="atencion_personal" value="5" required>
+                        <label data-translate="pregunta11A" for="atencion1">Excelente - Muy amables, conocedores y serviciales</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion2" name="atencion_personal" value="4">
+                        <label data-translate="pregunta11B"  for="atencion2">Muy buena - Atentos y resolvieron mis dudas</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion3" name="atencion_personal" value="3">
+                        <label data-translate="pregunta11C"  for="atencion3">Buena - Correcta pero sin destacar</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion4" name="atencion_personal" value="2">
+                        <label data-translate="pregunta11D"  for="atencion4">Regular - Algunos empleados podrían mejorar</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="atencion5" name="atencion_personal" value="1">
+                        <label data-translate="pregunta11E"  for="atencion5">Mala - Poco amables o desinteresados</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta12" class="etiqueta-pregunta" for="mejora_atencion">12. ¿Qué sugerencias tiene para mejorar nuestra
+                    atención al cliente?</label>
+                <textarea id="mejora_atencion" name="mejora_atencion" class="area-texto"
+                    placeholder="Escriba sus sugerencias para mejorar nuestro servicio..."></textarea>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta13" class="etiqueta-pregunta">13. ¿Conoce nuestros servicios adicionales? (Seleccione todos los que
+                    conozca)</label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio1" name="servicios_adicionales" value="medicion">
+                        <label data-translate="pregunta13A" for="servicio1">Medición de presión arterial/glucosa</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio2" name="servicios_adicionales" value="vacunacion">
+                        <label data-translate="pregunta13B" for="servicio2">Vacunación</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio3" name="servicios_adicionales" value="asesoria">
+                        <label data-translate="pregunta13C" for="servicio3">Asesoría farmacéutica</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio4" name="servicios_adicionales" value="programa">
+                        <label data-translate="pregunta13D" for="servicio4">Programas de fidelización</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="checkbox" id="servicio5" name="servicios_adicionales" value="ninguno">
+                        <label data-translate="pregunta13E" for="servicio5">No conozco ninguno</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta14" class="etiqueta-pregunta">14. ¿Recomendaría nuestra farmacia a familiares o amigos? <span
+                        class="marcador-requerido">*</span></label>
+                <div class="grupo-opciones">
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar1" name="recomendacion" value="5" required>
+                        <label data-translate="pregunta14A" for="recomendar1">Definitivamente sí - Siempre la recomiendo</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar2" name="recomendacion" value="4">
+                        <label data-translate="pregunta14B"  for="recomendar2">Probablemente sí - En general es buena</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar3" name="recomendacion" value="3">
+                        <label data-translate="pregunta14C"  for="recomendar3">No estoy seguro - Depende de lo que necesiten</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar4" name="recomendacion" value="2">
+                        <label data-translate="pregunta14D"  for="recomendar4">Probablemente no - Prefiero otras opciones</label>
+                    </div>
+                    <div class="item-opcion">
+                        <input type="radio" id="recomendar5" name="recomendacion" value="1">
+                        <label data-translate="pregunta14E"  for="recomendar5">Definitivamente no - No la recomendaría</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grupo-pregunta">
+                <label data-translate="pregunta15" class="etiqueta-pregunta" for="comentarios">15. ¿Tiene algún comentario adicional sobre nuestros
+                    productos o servicios?</label>
+                <textarea id="comentarios" name="comentarios" class="area-texto"
+                    placeholder="Escriba aquí cualquier comentario adicional que desee compartir..."></textarea>
+            </div>
+
+            <div class="contenedor-botones">
+                <button data-translate="enviar" type="button" class="boton boton-primario" onclick="evaluarEncuestaFarmacia()">Enviar
+                    Encuesta</button>
+                <button data-translate="limpiarForm" type="button" class="boton boton-secundario" onclick="limpiarFormularioFarmacia()">Limpiar
+                    Formulario</button>
+
+
+            </div>
+        </form>
+
+
+        <div id="seccionResultados" class="seccion-resultados">
+            <h3>Resumen de tus respuestas</h3>
+            <div class="resultado-item">
+                <p id="resultadoFrecuencia"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoAtencion"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoServicios"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoRecomendacion"></p>
+            </div>
+            <div class="resultado-item">
+                <p id="resultadoMejoras"></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="carrito-desplegable" id="carritoDesplegable">
+        <h2 data-translate="carritoCompras">Carrito de Compras</h2>
+        <div id="listaCarrito"></div>
+        <div class="totales">
+            <p>Subtotal: <span id="subtotal">$0.00</span></p>
+            <p>IVA (16%): <span id="iva">$0.00</span></p>
+            <label>
+                <input  type="checkbox" id="envioCheckbox" onchange="actualizarTotales()"> ¿Desea envío? ($5.00)
+            </label>
+            <p>Envío: <span id="envio">$0.00</span></p>
+            <p>Total: <span id="total">$0.00</span></p>
+        </div>
+        <button data-translate="vaciarCarrito" class="vaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button data-translate="pagar" class="pagar" onclick="pagar()">Pagar</button>
+    </div>
+
+    
+    <!-- Pie de página -->
+    <footer style="width: 100%; height: 100%; margin-left: -20px;">
+        <div class="footer-section">
+            <h3 data-translate="contactanos">Contactanos</h3>
+            <p data-translate="direccion"> <img src="img/direction.svg" alt="direccion" height="35px"> Dirección: Calle
+                Falsa 123, Ciudad, País
+            </p>
+            <p> <img src="img/Contactanos.svg" alt="Contactanos" height="35px"> +506 4560 7809</p>
+            <p> <img src="img/email.svg" alt="Email" height="35px"> info@farmaciaemma.com</p>
+
+            <iframe id="Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1637572.0349856855!2d-104.81044937428791!3d38.84777619594149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1740525684159!5m2!1ses!2scr"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <!-- Sección de enlaces rápidos -->
+        <div class="footer-section">
+            <h3 data-translate=rapidos>Enlaces Rapidos</h3>
+            <ul class="link-rap">
+
+                <li><a data-translate="inicio" href="#Principal">Inicio</a></li>
+
+                <li><a data-translate="farmaciaOnline" href="#farmaciaonline">Farmacia Online</a></li>
+
+                <li><a data-translate="nuestrosProductos" href="#inicioProductos">Productos Destacados</a></li>
+
+                <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                <li><a data-translate="proyectos" href="proyectos.html">Nuestros Proyectos</a></li>
+
+                <li><a data-translate="consultoria" href="consultoria.html">Consultoria</a></li>
+
+                <li><a data-translate="nosotros" href="nosotros.html">Nosotros</a></li>
+
+                <li><a data-translate="farmaciasDisponibles" href="localidades.html">Ubicaciones</a></li>
+
+                <li><a data-translate="farmaciaVirtual" href="portada.html">Farmacia Virtual 360°</a></li>
+
+            </ul>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="footer-section">
+            <h3 data-translate="siguenos">Siguenos en</h3>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><img src="img/facebook.svg" alt="Facebook"
+                        height="50px"></a> <!-- Icono de Facebook -->
+                <a href="https://Youtube.com" target="_blank"><img src="img/youtube.svg" alt="Youtube"
+                        height="50px"></a> <!-- Icono de Youtube -->
+                <a href="https://instagram.com" target="_blank"><img src="img/instagram.svg" alt="Instagram"
+                        height="50px"></a> <!-- Icono de Instagram -->
+                <a href="https://linkedin.com" target="_blank"><img src="img/linkedin.svg" alt="LinkedIn"
+                        height="50px"></a> <!-- Icono de LinkedIn -->
+            </div>
+        </div>
+
+
+        <!-- Sección de derechos de autor -->
+        <div class="footerCopy">
+            <p data-translate="copyr">&copy; 2021 Farmacia Emma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- interactividad Lottie JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.13/lottie.min.js"></script>
+
+    <!-- libreria Lottie JS-->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
+
+        <!-- libreria FONTAWESOME-->
+
+        <script src="https://kit.fontawesome.com/398e7a576f.js" crossorigin="anonymous"></script>
+
+    <script src="js/encuesta.js"></script>
+    <script src="js/traductor.js"></script>
+    <script src="js/inicio.js"></script>
+
+
+
+
+</body>
+
+</html>

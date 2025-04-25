@@ -1,0 +1,148 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+
+.Contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+   
+}
+
+.ContenidoEncabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.Navegacion ul {
+    display: flex;
+    list-style: none;
+}
+
+.Navegacion ul li {
+    margin-left: 1.5rem;
+}
+
+.Navegacion ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.Navegacion ul li a:hover {
+    color: #ff6600;
+}
+
+.Hero {
+    background: linear-gradient(rgba(0, 102, 204, 0.8), rgba(0, 77, 153, 0.8));
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+    margin-top: 86px;
+   
+    top: 86px;
+}
+
+.Hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.Hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.Boton {
+    display: inline-block;
+    background-color: #ff6600;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    
+
+}
+
+.Boton:hover {
+    background-color: #e65c00;
+}
+
+#soluciones {
+    padding: 4rem 0;
+
+}
+
+.btnTitulo {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #0066cc;
+    margin-top: 15px;
+}
+
+
+.ComboInteractivo {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.508);
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.ContenedorCombo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.SelectorCombo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.OpcionCombo {
+    padding: 0.8rem 1.5rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.OpcionCombo:hover {
+    background-color: #e9ecef;
+}
+
+.OpcionCombo.Activo {
+    background-color: #0066cc;
+    color: white;
+    border-color: #0066cc;
+}
+
+.ResultadoCombo {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border-left: 4px solid #ff6600;
+}
+

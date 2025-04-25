@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia Online</title>
+
+    <link rel="shortcut icon" href="img/logo3-removebg-preview.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/farmaciaOnline.css">
+
+
+
+    <!-- FontAwesome para el ícono del carrito -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- SweetAlert -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- BOOSTSTRAP -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header>
+
+        
+        <div class="logo">
+            <img src="img/logo3-removebg-preview.png" alt="Logo Farmacia">
+        </div>
+
+        <div class="inicio">
+            <a href="inicio.html" target="_parent" style="text-decoration: none;">Inicio</a>
+        </div>
+
+        <a href="ManualdeUsuario.pdf" download="Manual de Usuario.pdf">
+            <button class="boton-descarga">Descargar Manual de Usuario</button>
+          </a>
+
+
+        <div class="buscador">
+            <input type="text" id="buscadorProductos" placeholder="Buscar productos..." oninput="buscarProducto()">
+            <button onclick="buscarProducto()"><img src="img/buscar.png" alt="buscador" width="34px"></button>
+        </div>
+
+        <nav>
+
+
+            <!-- boton Traducir pagina -->
+            <!-- From Uiverse.io by csemszepp -->
+            <label class="switch">
+                <input onclick="changeLanguage()" type="checkbox" class="chbox">
+                <div class="slider slider--0">EN</div>
+                <div class="slider slider--1">
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="slider slider--2"></div>
+                <div class="slider slider--3">ES</div>
+            </label>
+
+        <!-- Inico de sesion / registrarse -->
+
+
+        <div class="contenedorBoton">
+            <img class="botonIcono" src="img/login.png" alt="login">
+            <div class="menuDesplegable">
+                <button class="btnLogin" data-translate="iniciarSesion" onclick="mostrarIniciarSesion()">Iniciar
+                    Sesion</button>
+                <button class="btnLogin" data-translate="registrarse"
+                    onclick="mostrarRegistrarse()">Registrarse</button>
+
+            </div>
+        </div>
+
+
+            <div class="carrito-icono" onclick="toggleCarrito()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="contadorCarrito">0</span>
+            </div>
+
+
+                    <!-- Carrito desplegable -->
+        <div class="carrito-desplegable" id="carritoDesplegable">
+            <h2>Carrito de Compras</h2>
+            <div id="listaCarrito"></div>
+            <div class="totales">
+                <p>Subtotal: <span id="subtotal">$0.00</span></p>
+                <p>IVA (16%): <span id="iva">$0.00</span></p>
+                <label>
+                    <input type="checkbox" id="envioCheckbox" onchange="actualizarTotales()"> ¿Desea envío? ($5.00)
+                </label>
+                <p>Envío: <span id="envio">$0.00</span></p>
+                <p>Total: <span id="total">$0.00</span></p>
+            </div>
+            <button class="vaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+            <button class="pagar" onclick="pagar()">Pagar</button>
+        </div>
+
+        </nav>
+    </header>
+
+
+
+
+    <section class="categorias">
+        <h2>Categorías</h2>
+        <button onclick="filtrarProductos('todos')"><img src="img/todo.png" width="50px" alt=""> Todos</button>
+        <button onclick="filtrarProductos('medicamentos')"><img src="img/pastillasIcono.png"
+                width="50px">Medicamentos</button>
+        <button onclick="filtrarProductos('vitaminas')"><img src="img/vitaminas.png" width="50px">Vitaminas y
+            Suplementos</button>
+        <button onclick="filtrarProductos('instrumentos')"><img src="img/glucose_mete.png" width="50px">Instrumentos y
+            Dispositivos Médicos</button>
+        <button onclick="filtrarProductos('cuidadoPiel')"><img src="img/cream.png" width="50px">Cuidado Personal y
+            Belleza</button>
+    </section>
+
+
+    <main>
+        <!-- Medicamentos -->
+        <section class="categoria-slide">
+            <h2 class="btn-title" data-categoria="medicamentos">Medicamentos</h2>
+            <div class="contenedor-slide">
+                <button class="boton-navegacion izquierda " onclick="moverSlide('medicamentos', -1)">&#10094;</button>
+                <div class="slide" id="slide-medicamentos">
+                    <!-- Producto 1 -->
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/Amoxilina-removebg-preview.png" alt="Amoxilina">
+                        <h3>Amoxilina</h3>
+                        <p>$15.00</p>
+
+                        <button
+                            onclick="agregarAlCarrito('Amoxilina', 15, 'img/Amoxilina-removebg-preview.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Amoxilina', 'Alivia el dolor y reduce la fiebre', 'img/Amoxilina-removebg-preview.png')">Info</button>
+                    </div>
+                    <!-- Producto 2 -->
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/Aspirina-removebg-preview.png" alt="Aspirina">
+                        <h3>Aspirina</h3>
+                        <p>$17.00</p>
+                        <button onclick="agregarAlCarrito('Aspirina', 17, 'img/Aspirina-removebg-preview.png')">Agregar
+                            al carrito</button>
+                        <button onclick="mostrarInfo('Aspirina', 'Antiinflamatorio y analgésico', 'img/Aspirina-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 3 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/CanesOral-removebg-preview.png" alt="Canes Oral">
+                        <h3>Canel Oral</h3>
+                        <p>$14.00</p>
+                        <button
+                            onclick="agregarAlCarrito('CanesOral', 14, 'img/CanesOral-removebg-preview.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Canes Oral', 'Antiinflamatorio y analgésico', 'img/CanesOral-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 4 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/doloran-removebg-preview.png" alt="Doloran">
+                        <h3>Doloran</h3>
+                        <p>$12.00</p>
+                        <button onclick="agregarAlCarrito('Doloran', 12, 'img/doloran-removebg-preview.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Doloran', 'Antiinflamatorio y analgésico', 'img/doloran-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 5 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/Ibuprofeno-removebg-preview.png" alt="Ibuprofeno">
+                        <h3>Ibuprofeno</h3>
+                        <p>$13.50</p>
+                        <button
+                            onclick="agregarAlCarrito('Ibuprofeno', 13.5, 'img/Ibuprofeno-removebg-preview.png')">Agregar
+                            al carrito</button>
+                        <button onclick="mostrarInfo('Ibuprofeno', 'Antiinflamatorio y analgésico', 'img/Ibuprofeno-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 6 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/Keval-removebg-preview.png" alt="Keval">
+                        <h3>Keval</h3>
+                        <p>$7.00</p>
+                        <button onclick="agregarAlCarrito('Keval', 7, 'img/Keval-removebg-preview.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Keval', 'Antiinflamatorio y analgésico', 'img/Keval-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 7 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/Loratadina-removebg-preview.png" alt="Loratadina">
+                        <h3>Loratadina</h3>
+                        <p>$7.00</p>
+                        <button
+                            onclick="agregarAlCarrito('Loratadina', 7, 'img/Loratadina-removebg-preview.png')">Agregar
+                            al carrito</button>
+                        <button onclick="mostrarInfo('Loratadina', 'Antiinflamatorio y analgésico', 'img/Loratadina-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 8 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/PanadolNoche-removebg-preview.png" alt="Panadol Noche">
+                        <h3>Panadol Noche</h3>
+                        <p>$7.00</p>
+                        <button
+                            onclick="agregarAlCarrito('Ibuprofeno', 7, 'img/PanadolNoche-removebg-preview.png')">Agregar
+                            al carrito</button>
+                        <button onclick="mostrarInfo('Panadol Noche', 'Antiinflamatorio y analgésico', 'img/PanadolNoche-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 9 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/paracetamol-removebg-preview.png" alt="paracetamol">
+                        <h3>Paracetamol</h3>
+                        <p>$7.00</p>
+                        <button
+                            onclick="agregarAlCarrito('Paracetamol', 7, 'img/paracetamol-removebg-preview.png')">Agregar
+                            al carrito</button>
+                        <button onclick="mostrarInfo('Paracetamol', 'Antiinflamatorio y analgésico', 'img/paracetamol-removebg-preview.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 10 -->
+
+                    <div class="producto" data-categoria="medicamentos">
+                        <img src="img/Pronol-removebg-preview.png" alt="Pronol">
+                        <h3>Pronol</h3>
+                        <p>$7.00</p>
+                        <button onclick="agregarAlCarrito('Pronol', 7, 'img/Pronol-removebg-preview.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Pronol', 'Antiinflamatorio y analgésico', 'img/Pronol-removebg-preview.png')">Info</button>
+                    </div>
+
+                </div>
+                <button class="boton-navegacion derecha" onclick="moverSlide('medicamentos', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!--  Vitaminas -->
+        <section class="categoria-slide">
+            <h2 class="btn-title" data-categoria="vitaminas">Vitaminas y Suplementos</h2>
+            <div class="contenedor-slide">
+                <button class="boton-navegacion izquierda" onclick="moverSlide('vitaminas', -1)">&#10094;</button>
+                <div class="slide" id="slide-vitaminas">
+                    <!-- Producto 1 -->
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/vitamina1.png" alt="Hidroxil B1-B6-B12">
+                        <h3>Hidroxil B1-B6-B12</h3>
+                        <p>$16.00</p>
+                        <button onclick="agregarAlCarrito('Hidroxil B1-B6-B12', 16, 'img/vitamina1.png')">Agregar al
+                            carrito</button>
+                        <button
+                            onclick="mostrarInfo('Hidroxil B1-B6-B12', 'Refuerza el sistema inmunológico', 'img/vitamina1.png')">Info</button>
+                    </div>
+                    <!-- Producto 2 -->
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/vitamina2.png" alt="Auxina A+E">
+                        <h3>Auxina A+E</h3>
+                        <p>$12.00</p>
+                        <button onclick="agregarAlCarrito('Auxina A+E', 12, 'img/vitamina2.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Auxina A+E', 'Fortalece huesos y dientes', 'img/vitamina2.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 3 -->
+
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/vitamina3.png" alt="VITAYDE-C">
+                        <h3>VITAYDE-C</h3>
+                        <p>$15.00</p>
+                        <button onclick="agregarAlCarrito('VITAYDE-C', 15, 'img/vitamina3.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('VITAYDE-C', 'Fortalece huesos y dientes', 'img/vitamina3.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 4 -->
+
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/vitamina4.png" alt="Vitamina E">
+                        <h3>Vitamina E</h3>
+                        <p>$14.00</p>
+                        <button onclick="agregarAlCarrito('Vitamina E', 14, 'img/vitamina4.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Vitamina E', 'Fortalece huesos y dientes', 'img/vitamina4.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 5 -->
+
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/vitamina5.png" alt="Pharmaton Kiddi">
+                        <h3>Pharmaton Kiddi</h3>
+                        <p>$12.00</p>
+                        <button onclick="agregarAlCarrito('Pharmaton Kiddi', 12, 'img/vitamina5.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Pharmaton Kiddi', 'Fortalece huesos y dientes', 'img/vitamina5.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 6 -->
+                    <!-- SUPLEMENTOS -->
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/Suplemento6.png" alt="Dietary Supplements Apple-Orange">
+                        <h3>Dietary Supplements Apple-Orange</h3>
+                        <p>$35.00</p>
+                        <button
+                            onclick="agregarAlCarrito('Dietary Supplements Apple-Orange', 35, 'img/Suplemento6.png')">Agregar
+                            al carrito</button>
+                        <button
+                            onclick="mostrarInfo('Dietary Supplements Apple-Orange', 'Fortalece huesos y dientes', 'img/Suplemento6.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 7 -->
+
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/Suplemento7.png" alt="Ensure Nutrivigor">
+                        <h3>Ensure Nutrivigor</h3>
+                        <p>$25.00</p>
+                        <button onclick="agregarAlCarrito('Ensure Nutrivigor', 25, 'img/Suplemento7.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Ensure Nutrivigor', 'Fortalece huesos y dientes', 'img/Suplemento7.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 8 -->
+
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/Suplemento8.png" alt="Keto Lean">
+                        <h3>Keto Lean</h3>
+                        <p>$17.00</p>
+                        <button onclick="agregarAlCarrito('Keto Lean', 17, 'img/Suplemento8.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Keto Lean', 'Fortalece huesos y dientes', 'img/Suplemento8.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 9 -->
+
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/Suplemento9.png" alt="Fish OIL">
+                        <h3>Fish OIL</h3>
+                        <p>$12.50</p>
+                        <button onclick="agregarAlCarrito('Fish OIL', 12.50, 'img/Suplemento9.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Fish OIL', 'Fortalece huesos y dientes', 'img/Suplemento9.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 10 -->
+
+                    <div class="producto" data-categoria="vitaminas">
+                        <img src="img/Suplemento10.png" alt="Vitamin C">
+                        <h3>Vitamin C</h3>
+                        <p>$26.00</p>
+                        <button onclick="agregarAlCarrito('Vitamin C', 26, 'img/Suplemento10.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Vitamin C', 'Fortalece huesos y dientes', 'img/Suplemento10.png')">Info</button>
+                    </div>
+
+                </div>
+                <button class="boton-navegacion derecha" onclick="moverSlide('vitaminas', 1)">&#10095;</button>
+            </div>
+        </section>
+
+
+        <!-- Instrumentos y dispositivos medicos -->
+        <section class="categoria-slide">
+            <h2 class="btn-title" data-categoria="instrumentos">Instrumentos y dispositivos medicos</h2>
+            <div class="contenedor-slide">
+                <button class="boton-navegacion izquierda" onclick="moverSlide('instrumentos', -1)">&#10094;</button>
+                <div class="slide" id="slide-instrumentos">
+                    <!-- Producto 1 -->
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/probeta_graduada.png" alt="Probeta Graduada 250 ML">
+                        <h3>Probeta Graduada 250 ML</h3>
+                        <p>$10.00</p>
+                        <button onclick="agregarAlCarrito('Probeta Graduada 250 ML', 10, 'img/probeta_graduada.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Probeta Graduada 250 ML', 'Refuerza el sistema inmunológico', 'img/probeta_graduada.png')">Info</button>
+                    </div>
+                    <!-- Producto 2 -->
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/Balanzadprecisión600g.png" alt="Balanza de Precisión 600g">
+                        <h3>Balanza de Precisión 600g</h3>
+                        <p>$112.00</p>
+                        <button onclick="agregarAlCarrito('Balanza de Precisión 600g', 112, 'img/Balanzadprecisión600g.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Balanza de Precisión 600g', 'Fortalece huesos y dientes', 'img/Balanzadprecisión600g.png')">Info</button>
+                    </div>
+                    <!-- Producto 3 -->
+
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/PipetasPasteur.png" alt="Pipetas Pasteur pack de 6">
+                        <h3>Pipetas Pasteur 6 unidades</h3>
+                        <p>$12.00</p>
+                        <button onclick="agregarAlCarrito('Pipetas Pasteur', 12, 'img/PipetasPasteur.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Pipetas Pasteur', 'Fortalece huesos y dientes', 'img/PipetasPasteur.png')">Info</button>
+                    </div>
+                    <!-- Producto 4 -->
+
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/pipetasVidrio.png" alt="Pipetas de Vidrio">
+                        <h3>Pipetas de Vidrio 2 unidades</h3>
+                        <p>$25.00</p>
+                        <button onclick="agregarAlCarrito('Pipetas de Vidrio', 25, 'img/pipetasVidrio.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Pipetas de Vidrio', 'Fortalece huesos y dientes', 'img/pipetasVidrio.png')">Info</button>
+                    </div>
+                    <!-- Producto 5 -->
+
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/PROBETAGRADUADADEPPDE10ML.png" alt="Probeta Graduada de PP 10ML">
+                        <h3>Probeta Graduada de PP 10ML</h3>
+                        <p>$8.00</p>
+                        <button onclick="agregarAlCarrito('Probeta Graduada de PP 10ML', 8, 'img/PROBETAGRADUADADEPPDE10ML.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Probeta Graduada de PP 10ML', 'Fortalece huesos y dientes', 'img/PROBETAGRADUADADEPPDE10ML.png')">Info</button>
+                    </div>
+                    <!-- Producto 6 -->
+
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/Termómetrodigitaldesondalarga.png" alt="Termometro Digital Sonda Larga">
+                        <h3>Termometro Digital Sonda Larga</h3>
+                        <p>$19.00</p>
+                        <button onclick="agregarAlCarrito('Termometro Digital Sonda Larga', 19, 'img/Termómetrodigitaldesondalarga.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Termometro Digital Sonda Larga', 'Fortalece huesos y dientes', 'img/Termómetrodigitaldesondalarga.png')">Info</button>
+                    </div>
+                    <!-- Producto 7 -->
+
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/termometro2.png" alt="Termometro Infrarojo Portatil">
+                        <h3>Termometro Infrarojo Portatil</h3>
+                        <p>$22.00</p>
+                        <button onclick="agregarAlCarrito('Termometro Infrarojo Portatil', 22, 'img/termometro2.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Termometro Infrarojo Portatil', 'Fortalece huesos y dientes', 'img/termometro2.png')">Info</button>
+                    </div>
+
+                    <!-- Producto 8-->
+
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/Medidor-de-presion.webp" alt="Medidor de Presion Portatil">
+                        <h3>Medidor de Presion Portatil</h3>
+                        <p>$52.00</p>
+                        <button onclick="agregarAlCarrito('Medidor de Presion Portatil', 52, 'img/Medidor-de-presion.webp')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Medidor de Presion Portatil', 'Fortalece huesos y dientes', 'img/Medidor-de-presion.webp')">Info</button>
+                    </div>
+
+                    <!-- Producto 9 -->
+
+                    <div class="producto" data-categoria="instrumentos">
+                        <img src="img/BotiquinPrimerosAuxilios.jpg" alt="Botiquin de Primeros Auxilios">
+                        <h3>Botiquin de Primeros Auxilios</h3>
+                        <p>$72.00</p>
+                        <button onclick="agregarAlCarrito('Botiquin de Primeros Auxilios', 72, 'img/BotiquinPrimerosAuxilios.jpg')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Botiquin de Primeros Auxilios', 'Fortalece huesos y dientes', 'img/BotiquinPrimerosAuxilios.jpg')">Info</button>
+                    </div>
+
+                </div>
+                <button class="boton-navegacion derecha" onclick="moverSlide('instrumentos', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Cuidado Personal y Belleza -->
+        <section class="categoria-slide">
+            <h2 class="btn-title" data-categoria="cuidadoPiel">Cuidado Personal y Belleza</h2>
+            <div class="contenedor-slide">
+                <button class="boton-navegacion izquierda" onclick="moverSlide('cuidadoPiel', -1)">&#10094;</button>
+                <div class="slide" id="slide-cuidadoPiel">
+                    <!-- Producto 1 -->
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/AceiteBiOilNatural60ml.webp" alt="Aceite Bio Oil Natura l60ml">
+                        <h3>Aceite Bio Oil Natura l60ml</h3>
+                        <p>$32.00</p>
+                        <button onclick="agregarAlCarrito('Aceite Bio Oil Natura l60ml', 32, 'img/AceiteBiOilNatural60ml.webp')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Aceite Bio Oil Natura l60ml', 'El Aceite Bio Oil Natural está elaborado con una fórmula 100% natural. Entre su mezcla de 14 aceites de origen vegetal se encuentran ingredientes como caléndula, lavanda, romero, camomila, entre otros.', 'img/AceiteBiOilNatural60ml.webp')">Info</button>
+                    </div>
+                    <!-- Producto 2 -->
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/Hidratante.jpg" alt="Hidratante Corporal de Aloe Vera 300ml">
+                        <h3>Hidratante Corporal de Aloe Vera 300ml</h3>
+                        <p>$29.00</p>
+                        <button onclick="agregarAlCarrito('Hidratante Corporal de Aloe Vera 300ml', 29, 'img/Hidratante.jpg')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Hidratante Corporal de Aloe Vera 300ml', 'El Hidratante Corporal de Aloe Vera tiene alto contenido de Aloe Vera Orgánico y Caesalpinia Spinosa con tecnología Matrix 3D, que favorecen a mantener la hidratación, ayudan a prevenir la resequedad y descamación de la piel. ', 'img/Hidratante.jpg')">Info</button>
+                    </div>
+                    <!-- Producto 3 -->
+
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/CremaDeManos.png" alt="Crema De Manos Body Original 40 Ml">
+                        <h3>Crema De Manos Body Original 40 Ml</h3>
+                        <p>$12.00</p>
+                        <button onclick="agregarAlCarrito('Crema De Manos Body Original 40 Ml', 12, 'img/CremaDeManos.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Crema De Manos Body Original 40 Ml', 'Un hidratante de manos intenso, formulado con aceite de argán, ácido hialurónico, escualano y una mezcla de mantecas de cacao y karité', 'img/CremaDeManos.png')">Info</button>
+                    </div>
+                    <!-- Producto 4 -->
+
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/GelBio.webp" alt="Gel Bio Oil Para Piel Seca 50ml">
+                        <h3>Gel Bio Oil Para Piel Seca 50ml</h3>
+                        <p>$20.00</p>
+                        <button onclick="agregarAlCarrito('Gel Bio Oil Para Piel Seca 50ml', 20, 'img/GelBio.webp')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Gel Bio Oil Para Piel Seca 50ml', 'Bio-Oil Gel cuenta con una fórmula especializada para combatir la piel seca, con el 97% de ingredientes activos y tan solo el 3% de agua, que hidrata la piel en profundidad y durante más tiempo.', 'img/GelBio.webp')">Info</button>
+                    </div>
+                    <!-- Producto 5 -->
+
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/DesodoranteArden.webp" alt="Desodorante Arden For Men Once 160gr">
+                        <h3>Desodorante Arden For Men Once 160gr</h3>
+                        <p>$17.50</p>
+                        <button onclick="agregarAlCarrito('Desodorante Arden For Men Once 160gr', 17.5, 'img/DesodoranteArden.webp')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Desodorante Arden For Men Once 160gr', 'El desodorante en crema Once de Arden For Men, tiene una fórmula sin alcohol que no causa alergias o irritaciones. Es de fácil aplicación y está clínicamente probado para brindarte una protección hasta de 48 horas.', 'img/DesodoranteArden.webp')">Info</button>
+                    </div>
+                    <!-- Producto 6 -->
+
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/JabónDucha.png" alt="Jabón Ducha Body Moroccanoil 250 Ml">
+                        <h3>Jabón Ducha Body Moroccanoil 250 Ml</h3>
+                        <p>$80.00</p>
+                        <button onclick="agregarAlCarrito('Jabón Ducha Body Moroccanoil 250 Ml', 80, 'img/JabónDucha.png')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Jabón Ducha Body Moroccanoil 250 Ml', 'Un gel de ducha suave con infusión de aceite de argán que ayuda a hidratar y revitalizar la piel a la vez que la limpia.', 'img/JabónDucha.png')">Info</button>
+                    </div>
+                    <!-- Producto 7 -->
+
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/CremaCorporal.webp" alt="Woman Crema Reafirmante X 200 Ml">
+                        <h3>Woman Crema Reafirmante X 200 Ml</h3>
+                        <p>$60.00</p>
+                        <button onclick="agregarAlCarrito('Woman Crema Reafirmante X 200 Ml', 60, 'img/CremaCorporal.webp')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Woman Crema Reafirmante X 200 Ml', 'Fortalece huesos y dientes', 'img/CremaCorporal.webp')">Info</button>
+                    </div>
+
+                    <!-- Producto 8-->
+
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/Bronceador.webp" alt="Bronceador Nude En Gel Spf4 120ml X2 uds">
+                        <h3>Bronceador Nude En Gel Spf4 120ml X2 uds</h3>
+                        <p>$62.00</p>
+                        <button onclick="agregarAlCarrito('Bronceador Nude En Gel Spf4 120ml X2 uds', 62, 'img/Bronceador.webp')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Bronceador Nude En Gel Spf4 120ml X2 uds', 'Bronceador en gel que proporciona un color intenso, uniforme y duradero. Tu piel se mantendrá suave y humectada gracias a sus ingredientes acondicionadores.' , 'img/Bronceador.webp')">Info</button>
+                    </div>
+
+                    <!-- Producto 9 -->
+
+                    <div class="producto" data-categoria="cuidadoPiel">
+                        <img src="img/Fotoprotector.webp" alt="Isdin Fotoprotector Uv Mineral Fps 50+">
+                        <h3>Isdin Fotoprotector Uv Mineral Fps 50+</h3>
+                        <p>$101.50</p>
+                        <button onclick="agregarAlCarrito('Isdin Fotoprotector Uv Mineral Fps 50+', 101.50, 'img/Fotoprotector.webp')">Agregar al
+                            carrito</button>
+                        <button onclick="mostrarInfo('Isdin Fotoprotector Uv Mineral Fps 50+', 'UV Mineral Brush es una brocha Foto protectora facial de uso diario y amplio espectro con filtros 100% minerales. Muy alta protección FPS 50+. Ofrece una muy alta protección invisible, aplicable sobre piel maquillada, ideal para retoques. Cobertura ligera. Cómoda y fácil aplicación.' , 'img/Fotoprotector.webp')">Info</button>
+                    </div>
+
+
+                </div>
+                <button class="boton-navegacion derecha" onclick="moverSlide('cuidadoPiel', 1)">&#10095;</button>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-section">
+            <h3>Informacion</h3>
+            <p> <img src="img/direction.svg" alt="direccion" height="35px"> Dirección: Calle Falsa 123, Ciudad, País
+            </p>
+            <p> <img src="img/Contactanos.svg" alt="Contactanos" height="35px"> +506 4560 7809</p>
+            <p> <img src="img/email.svg" alt="Email" height="35px"> info@farmaciaemma.com</p>
+
+            <iframe id="Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1637572.0349856855!2d-104.81044937428791!3d38.84777619594149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1740525684159!5m2!1ses!2scr"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <!-- Sección de enlaces rápidos -->
+        <div class="footer-section">
+            <h3>Contactanos</h3>
+            <form id="formulario-contacto">
+                <div class="form-group">
+                    <label  for="name">Nombre Completo:</label>
+                    <input style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" type="text" id="nombreCompleto" name="name" >
+
+
+                    <label for="email">Correo Electrónico:</label>
+                    <input style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" type="email" id="correoElectronico" name="email" >
+
+
+                    <label for="phone">Numero de Telefono:</label>
+                    <input style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" type="tel" id="phone" name="phone" >
+
+
+                    <label for="message">Asunto:</label>
+                    <textarea style="width: 600px;
+                    padding: 0px;
+                    margin: 0px;
+                    border: 1px solid #E8EDE7;
+                    border-radius: 4px;
+                    font-size: 16px;" id="message" name="message" rows="3" ></textarea>
+
+                    <button data-translate="enviar" id="btn-enviar" type="submit">Enviar</button>
+            </form>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="footer-section">
+            <h3>Siguenos en</h3>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><img src="img/facebook.svg" alt="Facebook"
+                        height="50px"></a> <!-- Icono de Facebook -->
+                <a href="https://Youtube.com" target="_blank"><img src="img/youtube.svg" alt="Youtube"
+                        height="50px"></a> <!-- Icono de Youtube -->
+                <a href="https://instagram.com" target="_blank"><img src="img/instagram.svg" alt="Instagram"
+                        height="50px"></a> <!-- Icono de Instagram -->
+                <a href="https://linkedin.com" target="_blank"><img src="img/linkedin.svg" alt="LinkedIn"
+                        height="50px"></a> <!-- Icono de LinkedIn -->
+            </div>
+        </div>
+
+
+        <!-- Sección de derechos de autor -->
+        <div class="footerCopy">
+            <p>&copy; 2021 Farmacia Emma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <!-- CARGAR LA LIBRERIA EMAIL.JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+
+
+    <!-- libreria SWEETALERT-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- libreria FONTAWESOME-->
+
+    <script src="https://kit.fontawesome.com/398e7a576f.js" crossorigin="anonymous"></script>
+
+
+    <!-- interactividad Lottie JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.13/lottie.min.js"></script>
+
+    <!-- libreria Lottie JS-->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@0.3.0/dist/lottie-player.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+
+    <!-- funciones JS-->
+    <script src="js/farmaciaOnline.js"></script>
+    <script src="js/formularioContacto.js"></script>
+
+
+
+</body>
+
+</html>

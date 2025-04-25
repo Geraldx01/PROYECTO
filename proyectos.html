@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="img/logo3-removebg-preview.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+    <link rel="stylesheet" href="css/proyectos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Proyectos - Farmacia Emma</title>
+
+    <!-- SweetAlert -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <nav class="menu-horizontal">
+
+        <div id="logo"><img src="img/logo3-removebg-preview.png" alt="Farmacia Emma"></div>
+
+        <!-- Menú desplegable -->
+
+        <button class="MenuDesplegable" onclick="MenuDesplegable()">
+
+
+            <span data-translate="menu" class="text">MENU</span>
+        </button>
+
+
+        <ul>
+            <li><a data-translate="inicio" href="inicio.html">Inicio</a></li>
+
+            <li class="has-submenu">
+                <a data-translate="productos" href="#">Productos</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none; color: #eeea05;" data-translate="farmaciaOnline"
+                            href="farmaciaOnline.html">Farmacia Online</a></li>
+
+                    <li><a style="text-decoration: none;" data-translate="productosDestacados"
+                            href="#inicioProductos">Productos
+                            Destacados</a></li>
+
+
+                    <li><a style="text-decoration: none;" data-translate="instrumentos"
+                            href="instrumentos.html">Instrumentos
+                            Farmaceuticos</a></li>
+                </ul>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="servicios" href="#">Servicios</a>
+                <ul class="submenu">
+                    <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                    <li><a data-translate="consultoria" href="consultoria.html">Consultoría</a></li>
+                    <li><a data-translate="CalculadoraPeso" href="calculadoraPeso.html">Calculadora de Peso</a></li>
+
+                </ul>
+            </li>
+
+            <li><a style="text-decoration: none;" data-translate="contactanos" href="#InicioContactanos">Contactanos</a>
+            </li>
+
+            <li class="has-submenu">
+                <a data-translate="acercaDe" href="#">Acerca de</a>
+                <ul class="submenu">
+
+                    <li><a style="text-decoration: none;" data-translate="nosotros" href="nosotros.html">Nosotros</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="proyectos" href="proyectos.html">Proyectos</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciasDisponibles"
+                            href="localidades.html">Ubicaciones</a>
+                    </li>
+
+                    <li><a style="text-decoration: none;" data-translate="farmaciaVirtual" href="portada.html">Farmacia
+                            Virtual 360°</a></li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+
+        <!-- Inico de sesion / registrarse -->
+
+        <div class="contenedorBoton">
+            <img class="botonIcono" src="img/login.png" alt="login">
+            <div class="menuDesplegable">
+                <button class="btnLogin" data-translate="iniciarSesion" onclick="mostrarIniciarSesion()">Iniciar
+                    Sesion</button>
+                <button class="btnLogin" data-translate="registrarse" onclick="mostrarRegistrarse()">Registrarse</button>
+        
+            </div>
+        </div>
+
+        <div id="seccionDesplegable">
+            <div>
+                <span id="botonCerrar"></span>
+
+                <form id="formularioInicio" style="display: none;">
+                    <button id="botonAbrir" onclick=""></button>
+
+                    <button id="botonRegistrarse" onclick=""></button>
+                </form>
+
+            </div>
+        </div>
+
+
+
+        <!-- boton Traducir pagina -->
+        <!-- From Uiverse.io by csemszepp -->
+        <label class="switch">
+            <input onclick="changeLanguage()" type="checkbox" class="chbox">
+            <div class="slider slider--0">EN</div>
+            <div class="slider slider--1">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="slider slider--2"></div>
+            <div class="slider slider--3">ES</div>
+        </label>
+
+
+
+        <!-- Carrito de compras -->
+        <div class="carrito-icono" onclick="toggleCarrito()">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="contadorCarrito">0</span>
+        </div>
+
+
+    </nav>
+
+
+    <header>
+        <h1>Proyectos Farmaceuticos</h1>
+        <p>Exploramos investigaciones, desarrollos y avances en el mundo farmacéutico</p>
+      </header>
+      
+      <main>
+        <section>
+          <h2>¿Qué es un proyecto farmaceutico?</h2>
+          <p>Un proyecto farmaceutico puede abordar el desarrollo de medicamentos, el estudio de interacciones farmacológicas, servicios clínicos, formulación, investigación o educación sobre el uso racional de fármacos.</p>
+        </section>
+
+      </main>
+
+<!-- GALERIA FOTOGRAFICA lightbox -->
+<section id="s2" class="container-fluid fondo2 text-center pt-5">
+
+    <h2 class="Titulo">Nuestros Proyectos</h2>
+    <div class="row">
+        <div class="col-12">
+
+            <div class="container-fluid pt-3">
+
+
+                <div class="tz-gallery">
+                    <div class="row">
+
+                        <!-- FOTO1 -->
+                        <div class="col-sm-4 col-md-6 col-lg-4">
+                            <div class="">
+                                <a class="" href="img/laboratoriosfarmacéuticos.webp">
+                                    <img src="img/laboratoriosfarmacéuticos.webp" alt="Laboratorio" class="img-fluid ">
+                                </a>
+                                <div class=" ">
+                                    <h3 class="pt-5 ">Laboratorios Farmacéuticos</h3>
+
+
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOTO2 -->
+                        <div class="col-sm-4 col-md-6 col-lg-4 ">
+                            <div class=" ">
+                                <a class=" " href="img/reunionesFarmaceuticas.webp">
+                                    <img src="img/reunionesFarmaceuticas.webp" alt="Reunión" class="img-fluid ">
+                                </a>
+                                <div class=" ">
+                                    <h3 class="pt-5 ">Reuniones Farmaceuticas con Clientes</h3>
+
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOTO3 -->
+                        <div class="col-sm-4 col-md-6 col-lg-4 ">
+                            <div class=" ">
+                                <a class=" " href="img/controlCalidad.webp">
+                                    <img src="img/controlCalidad.webp" alt="Controles de Calidad Farmaceuticos" class="img-fluid ">
+                                </a>
+                                <div class=" ">
+                                    <h3 class="pt-5 ">Controles de Calidad Farmaceuticos</h3>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOTO4 -->
+                        <div class="col-sm-4 col-md-6 col-lg-4 ">
+                            <div class=" ">
+                                <a class=" " href="img/Capacitaciones.webp">
+                                    <img src="img/Capacitaciones.webp" alt="Capacitación" class="img-fluid ">
+                                </a>
+                                <div class=" ">
+                                    <h3 class="pt-5 ">Capacitaciónes</h3>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOTO5 -->
+                        <div class="col-sm-4 col-md-6 col-lg-4 ">
+                            <div class=" ">
+                                <a class=" " href="img/auditorias.webp">
+                                    <img src="img/auditorias.webp" alt="Auditoría" class="img-fluid ">
+                                </a>
+                                <div class=" ">
+                                    <h3 class="pt-5 ">Auditoría</h3>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FOTO6 -->
+                        <div class="col-sm-4 col-md-6 col-lg-4 ">
+                            <div class=" ">
+                                <a class=" " href="img/Manufacturacion.webp">
+                                    <img src="img/Manufacturacion.webp" alt="Manufactura" class="img-fluid ">
+                                </a>
+                                <div class=" ">
+                                    <h3 class="pt-5 ">Manufacturaciones</h3>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+    <div class="carrito-desplegable" id="carritoDesplegable">
+        <h2 data-translate="carritoCompras">Carrito de Compras</h2>
+        <div id="listaCarrito"></div>
+        <div class="totales">
+            <p>Subtotal: <span id="subtotal">$0.00</span></p>
+            <p>IVA (16%): <span id="iva">$0.00</span></p>
+            <label>
+                <input  type="checkbox" id="envioCheckbox" onchange="actualizarTotales()"> ¿Desea envío? ($5.00)
+            </label>
+            <p>Envío: <span id="envio">$0.00</span></p>
+            <p>Total: <span id="total">$0.00</span></p>
+        </div>
+        <button data-translate="vaciarCarrito" class="vaciarCarrito" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button data-translate="pagar" class="pagar" onclick="pagar()">Pagar</button>
+    </div>
+
+    </div>
+
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="footer-section">
+            <h3 data-translate="contactanos">Contactanos</h3>
+            <p data-translate="direccion"> <img src="img/direction.svg" alt="direccion" height="35px"> Dirección: Calle
+                Falsa 123, Ciudad, País
+            </p>
+            <p> <img src="img/Contactanos.svg" alt="Contactanos" height="35px"> +506 4560 7809</p>
+            <p> <img src="img/email.svg" alt="Email" height="35px"> info@farmaciaemma.com</p>
+
+            <iframe id="Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1637572.0349856855!2d-104.81044937428791!3d38.84777619594149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1740525684159!5m2!1ses!2scr"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+
+        <!-- Sección de enlaces rápidos -->
+        <div class="footer-section">
+            <h3 data-translate=rapidos>Enlaces Rapidos</h3>
+            <ul class="link-rap">
+
+                <li><a data-translate="inicio" href="#Principal">Inicio</a></li>
+
+                <li><a data-translate="farmaciaOnline" href="#farmaciaonline">Farmacia Online</a></li>
+
+                <li><a data-translate="nuestrosProductos" href="#inicioProductos">Productos Destacados</a></li>
+
+                <li><a data-translate="nuestrosServicios" href="#inicioServicios">Nuestros Servicios</a></li>
+
+                <li><a data-translate="proyectos" href="proyectos.html">Nuestros Proyectos</a></li>
+
+                <li><a data-translate="consultoria" href="consultoria.html">Consultoria</a></li>
+
+                <li><a data-translate="nosotros" href="nosotros.html">Nosotros</a></li>
+
+                <li><a data-translate="farmaciasDisponibles" href="localidades.html">Ubicaciones</a></li>
+
+                <li><a data-translate="farmaciaVirtual" href="portada.html">Farmacia Virtual 360°</a></li>
+                
+
+            </ul>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="footer-section">
+            <h3 data-translate="siguenos">Siguenos en</h3>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank"><img src="img/facebook.svg" alt="Facebook"
+                        height="50px"></a> <!-- Icono de Facebook -->
+                <a href="https://Youtube.com" target="_blank"><img src="img/youtube.svg" alt="Youtube"
+                        height="50px"></a> <!-- Icono de Youtube -->
+                <a href="https://instagram.com" target="_blank"><img src="img/instagram.svg" alt="Instagram"
+                        height="50px"></a> <!-- Icono de Instagram -->
+                <a href="https://linkedin.com" target="_blank"><img src="img/linkedin.svg" alt="LinkedIn"
+                        height="50px"></a> <!-- Icono de LinkedIn -->
+            </div>
+        </div>
+
+
+        <!-- Sección de derechos de autor -->
+        <div class="footerCopy">
+            <p data-translate="copyr">&copy; 2021 Farmacia Emma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script src="js/inicio.js"></script>
+    <script src="js/traductor.js"></script>
+
+
+
+    <script src="https://kit.fontawesome.com/398e7a576f.js" crossorigin="anonymous"></script>
+
+
+        <!-- carga de la libreria -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js "></script> 
+    
+        <script> baguetteBox.run('.tz-gallery'); </script>
+    
+
+
+</body>
+
+</html>
